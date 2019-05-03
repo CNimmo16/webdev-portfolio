@@ -1,14 +1,96 @@
-h1 {
-    font-family: "Slabo 27px";
-    letter-spacing: 0.13em;
+@import '@/assets/css/_variables.scss';
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-size: 0.85rem;
+  @include mq("large-phone") {
+      font-size: 0.9rem;
+  }
+  @include mq("large-tablet") {
+      font-size: 0.95rem;
+  }
+  @include mq("small-monitor") {
+      font-size: 1rem;
+  }
 }
 
+.home.section {
+    height: 100vh;
+}
 
+h1 {
+    @extend %font-slabo;
+    letter-spacing: 0.13em;
+    text-align: left;
+}
 
+h2 {
+    @extend %font-slabo;
+    letter-spacing: 0.13em;
+    text-align: left;
+}
+
+p {
+    text-align: left;
+    font-size: 1em;
+    line-height: 1.8;
+}
 
 ul {
     width: fit-content;
     list-style: none;
     text-align: left;
     padding: 0;
+    @extend %font-merri
+}
+
+button {
+    outline: none;
+    border: none;
+    background-color: $palette-background;
+    color: #fff;
+    @extend %font-merri;
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 8px 15px;
+}
+
+.down-button {
+    background-color: transparent;
+    color: #000;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span {
+        padding-bottom: 35px;
+    }
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-15px);
+        }
+        80% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+    svg {
+        cursor: pointer;
+        width: 250px;
+        animation: bounce 2s infinite ease-in-out;
+        path {
+            // fill: $palette-secondary;
+            fill: url(#svg-gradient) $palette-secondary;
+            fill-opacity: 1;
+        }
+    }
 }

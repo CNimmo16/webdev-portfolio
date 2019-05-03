@@ -1,11 +1,41 @@
+$breakpoints: (
+    "phone":        768px,
+    "large-phone":    948px,
+    "tablet":       1024px,
+    "large-tablet":       1291px,
+    "small-monitor":     1440px,
+    "large-monitor":    1700px
+);
+@mixin mq($width, $type: min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @if $type == max {
+            $width: $width - 1px;
+        }
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
 %font-slabo {
     font-family: "Slabo 27px", Helvetica, sans-serif;
+    font-size: 27px;
 }
 
 %font-merri {
     font-family: 'Merriweather Sans', Arial, sans-serif;
 }
 
-%font-bio {
-    font-family: 'BioRhyme Expanded', Arial, sans-serif;
-}
+
+$x-swatch-darkgrey: #282c34;
+$x-swatch-lightgrey: #a9a9a9;
+$x-swatch-darkblue: #001746;
+$x-swatch-lightblue: #f3f7f9;
+
+$palette-background: $x-swatch-darkgrey;
+$palette-primary: $x-swatch-darkgrey;
+$palette-background-secondary: $x-swatch-darkblue;
+$palette-background-tertiary: $x-swatch-lightblue;
+
+$palette-secondary: $x-swatch-lightgrey;

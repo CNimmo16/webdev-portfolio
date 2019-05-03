@@ -1,5 +1,5 @@
 <template>
-  <div class="intro">
+  <div id="intro" class="home section">
     <p id="typewriter"></p>
   </div>
 </template>
@@ -28,13 +28,13 @@ export default {
         window.setTimeout(() => {
           tl.add({
             targets: document.getElementsByClassName("ti-cursor")[0],
-            left: "300px"
+            translateX: "300px"
           })
           .add({
             targets: document.getElementsByClassName("ti-cursor")[0],
             width: "100vw",
             height: "50vh",
-            translateX: "-50vw",
+            translateX: "-=50vw",
             duration: 1000,
             easing: "easeOutQuart"
           })
@@ -44,32 +44,23 @@ export default {
             duration: 1000,
             delay: 500
           })
-          // .add({
-          //   targets: document.getElementsByClassName("ti-cursor")[0],
-          //   height: 20,
-          //   duration: 10
-          // });
         }, 300)
         window.setTimeout(() => {
-          var count = 0;
-          const max = window.document.body.clientHeight / 10;
-          const int = window.setInterval(() => {
-            if(count < max) {
-              window.scrollBy(0, 10)
-              count ++
-            } else {
-              window.clearInterval(int)
-            }
-          }, 10)
-        }, 1800);
+          if(window.scrollY < (window.innerHeight / 3)) {
+            this.$scrollTo(document.getElementById("start"), 1000)
+          }
+        }, 1600);
       }
     })
     .exec(async() => {
       document.getElementsByClassName("ti-cursor")[0].style.left = "-0.8ch";
     })
-    .type('<span style="color: #cc99cd;">var </span>').pause(50).type('c_nimmo <span style="color: #67cdcc">= </span>').pause(50).type('<span style="color: #cc99cd;">junior </span>').pause(100).type('<span style="color: #f8c555">WebDeveloper()</span> {').break().pause(200).type('<span style="color: #f08d49; padding-left: 4ch;">return </span>').pause(300).type('<span style="color: #a9eca6">"dedicated"</span><span style="color: #fff">;</span>').pause(700).delete(12).pause(200).type('<span style="color: #a9eca6">"versatile"</span><span style="color: #fff">;</span>').pause(700).delete(12).pause(200).type('<span style="color: #a9eca6">"an eye for design"</span><span style="color: #fff">;</span>').pause(500).break().pause(200)
-    .type('}')
+    .type('<span style="color: #cc99cd;">var </span>').pause(50).type('c_nimmo <span style="color: #67cdcc">= </span>').pause(50).type('<span style="color: #cc99cd;">junior </span>').pause(100).type('<span style="color: #f8c555">WebDeveloper()</span> {').break().pause(200).type('<span style="color: #f08d49; padding-left: 4ch;">return </span>').pause(300).type('<span style="color: #a9eca6">"dedicated"</span><span style="color: #fff">;</span>').pause(700).delete(12).pause(200).type('<span style="color: #a9eca6">"versatile"</span><span style="color: #fff">;</span>').pause(700).delete(12).pause(200).type('<span style="color: #a9eca6">"an eye for design"</span><span style="color: #fff">;</span>')
     // .pause(500)
+    .break()
+    // .pause(200)
+    .type('}')
+    .pause(500)
     .exec(async() => {
       document.getElementsByClassName("ti-cursor")[0].style.animation = "none";
       document.getElementsByClassName("ti-cursor")[0].style.WebkitAnimation = "none";
@@ -84,9 +75,8 @@ export default {
 </script>
 
 <style lang="scss">
-  .intro {
-    background-color: #282c34;
-    height: 100vh;
+  #intro {
+    background-color: $palette-background;
   }
   #typewriter {
     margin: 0 auto;
@@ -97,7 +87,7 @@ export default {
     text-align: left;
     line-height: 1.25;
     width: 600px;
-    background-color: #282c34;
+    background-color: $palette-background;
     padding: 10px;
     color: #fff;
     font-size: 1.6em;
