@@ -18,6 +18,14 @@ $breakpoints: (
     }
 }
 
+%overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 %font-slabo {
     font-family: "Slabo 27px", Helvetica, sans-serif;
     font-size: 27px;
@@ -25,6 +33,7 @@ $breakpoints: (
 
 %font-merri {
     font-family: 'Merriweather Sans', Arial, sans-serif;
+    font-weight: 400;
 }
 
 
@@ -37,5 +46,11 @@ $palette-background: $x-swatch-darkgrey;
 $palette-primary: $x-swatch-darkgrey;
 $palette-background-secondary: $x-swatch-darkblue;
 $palette-background-tertiary: $x-swatch-lightblue;
+
+// $launchpad-color: $palette-background-tertiary;
+// $projects-color: $palette-background;
+// $launchpad-color: #235269;
+$launchpad-color: #648A9D;
+$projects-color: $palette-background-tertiary;
 
 $palette-secondary: $x-swatch-lightgrey;

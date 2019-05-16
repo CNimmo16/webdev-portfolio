@@ -32,9 +32,9 @@ export default {
           })
           .add({
             targets: document.getElementsByClassName("ti-cursor")[0],
-            width: "100vw",
-            height: "50vh",
-            translateX: "-=50vw",
+            width: "120vw",
+            height: "60vh",
+            translateX: "-=60vw",
             duration: 1000,
             easing: "easeOutQuart"
           })
@@ -103,7 +103,7 @@ export default {
     top: -2px;
     &.block {
       display: block !important;
-      background-color: #fff;
+      background-color: $launchpad-color;
       left: 0;
       top: 3px;
       color: #282c34 !important;

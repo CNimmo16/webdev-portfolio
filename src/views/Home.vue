@@ -13,7 +13,7 @@
 import Intro from "@/components/Intro.vue"
 import Launchpad from "@/components/Launchpad.vue"
 import Projects from "@/components/Projects.vue"
-import Void from "@/components/Void.vue"
+// import Void from "@/components/Void.vue"
 import Lab from "@/components/Lab.vue"
 
 import debounce from 'lodash/debounce';
@@ -24,7 +24,7 @@ export default {
     Intro,
     Launchpad,
     Projects,
-    Void,
+    // Void,
     Lab
   },
   mounted() {
@@ -39,14 +39,22 @@ export default {
       this.$store.commit('setScroll', payload);
       const pages = ["intro", "start", "projects", "lab"]
       window.history.replaceState(null, ("page " + payload.page), "#" + pages[payload.page])
+      // if(payload.page === 1) {
+      //   this.$scrollLock.lock();
+      //   console.log("lock")
+      // } else {
+      //   this.$scrollLock.unlock();
+      // }
     }
   },
   created() {
     this.handleDebouncedScroll = debounce(this.handleScroll, 20);
     window.addEventListener('scroll', this.handleDebouncedScroll);
+    window.addEventListener('resize', this.handleScroll);
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleDebouncedScroll);
+    window.removeEventListener('resize', this.handleScroll);
   },
   computed: {
     currentPage () {

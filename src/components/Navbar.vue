@@ -52,7 +52,7 @@ export default {
         }
     },
     watch: {
-        '$route.name' (to, from) {
+        '$route.name' (to) {
             this.isHome = (to === "home") ? true : false;
         }
     },
