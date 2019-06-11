@@ -127,20 +127,25 @@
             textarea {
                 padding-top: 15px;
             }
-            .name {
-                flex-basis: 30%;
-            }
-            .company {
-                flex-basis: 60%;
-            }
-            .email {
-                flex-basis: 40%;
-            }
-            .phone {
-                /*flex-basis: ;*/
-            }
-            .subject, .message {
+            .name, .company, .email, .phone, .subject, .message {
                 flex-basis: 100%;
+            }
+            @include mq("small-phone") {
+                .name {
+                    flex-basis: 30%;
+                }
+                .company {
+                    flex-basis: 60%;
+                }
+                .email {
+                    flex-basis: 40%;
+                }
+                .phone {
+                    flex-basis: 30%;
+                }
+                .subject, .message {
+                    flex-basis: 100%;
+                }
             }
             textarea {
                 min-height: 200px;

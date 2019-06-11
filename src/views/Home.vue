@@ -30,12 +30,22 @@ export default {
     Lab,
     Contact
   },
+  data() {
+    return {
+      pages: ["intro", "start", "projects", "lab", "contact"]
+    }
+  },
   mounted() {
-    this.handleScroll()
+    const hash = window.location.hash
+    if(hash.length > 0 && this.pages.indexOf(hash.slice(1)) > -1) {
+      const cancelScroll = this.$scrollTo(hash)
+    } else {
+      this.handleScroll()
+    }
   },
   methods: {
     handleScroll() {
-      const pages = ["intro", "start", "projects", "lab", "contact"]
+      const pages = this.pages;
       let i = pages.slice().reverse().findIndex((page) => {
         const pagePos = window.document.getElementById(page).getBoundingClientRect().top - window.document.body.getBoundingClientRect().top
         return pagePos < window.scrollY + 40
