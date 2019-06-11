@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="nav-toggle" @click="navOpen = !navOpen" :class="{ close: navOpen, open: !navOpen }">
+    <div class="nav-toggle" @click="navOpen = !navOpen" :class="{ close: navOpen, open: !navOpen, grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light' }">
       <div class="bar"></div>
       <div class="bar"></div>
       <div class="bar"></div>
@@ -16,6 +16,7 @@
   import Navbar from "@/components/Navbar.vue"
 
   export default {
+    name: "App",
     components: {
       Navbar
     },
@@ -24,6 +25,32 @@
         navOpen: false
       }
     },
+    computed: {
+      currentPage() {
+        return this.$store.state.page;
+      },
+      pageColor() {
+        var color = null;
+        switch(this.currentPage) {
+            case 0:
+                color = "grey";
+                break;
+            case 1:
+                color = "blue";
+                break;
+            case 2:
+                color = "light";
+                break;
+            case 3:
+                color = "grey";
+                break;
+            case 4:
+                color = "light";
+                break;
+        }
+        return color;
+      }
+    }
   }
 </script>
 
@@ -36,6 +63,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $palette-text-dark;
+  overflow-x: hidden;
 }
 
 @keyframes bar1 {
@@ -52,15 +80,21 @@
 
 .nav-toggle {
   position: fixed;
-  right: 55px;
-  top: 35px;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 45px;
   z-index: 800;
+  @include mq("phone") {
+    display: none;
+  }
   .bar {
+    top: 22px;
+    left: 9px;
     position: absolute;
     height: 4px;
     width: 33px;
-    background-color: $palette-text-light;
-    transition: transform 0.5s;
+    transition: transform 0.5s, background-color 1s, opacity 0.7s;
     &:nth-of-type(1) {
       transform: translateY(-12px);
     }
@@ -71,14 +105,18 @@
       transform: translateY(12px);
     }
   }
+  &.grey .bar { background-color: $palette-text-light; }
+  &.blue .bar { background-color: $palette-text-dark; }
+  &.light .bar { background-color: $palette-text-blue; }
   &.close {
     .bar {
+      background-color: $palette-text-blue;
       &:nth-of-type(1) {
         transform: rotate(-315deg) scaleX(1.2);
         animation: bar1 0.7s;
       }
       &:nth-of-type(2) {
-        display: none;
+        opacity: 0;
       }
       &:nth-of-type(3) {
         transform: rotate(315deg) scaleX(1.2);

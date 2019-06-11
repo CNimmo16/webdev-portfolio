@@ -26,19 +26,25 @@ export default {
       afterComplete: () => {
         var cursor = document.getElementsByClassName("ti-cursor")[0];
         cursor.classList.add("block");
-        cursor.style.width = "0.2ch";
+        cursor.style.width = "2px";
+        cursor.style.height = "27px";
+        cursor.innerText = "";
         cursor.style.backgroundColor = "#fff";
+        const startPoint = (window.innerWidth / 2) - (document.getElementById("typewriter").offsetLeft)
+        const endPoint = ((document.getElementById("typewriter").offsetLeft) + (window.innerWidth * 0.1)) * -1
         window.setTimeout(() => {
           tl.add({
             targets: cursor,
-            translateX: "50vw"
+            translateX: startPoint,
+            translateY: "+=15px",
+            duration: 500
           })
           .add({
             targets: cursor,
-            width: "100vw",
+            width: "120vw",
             height: "60vh",
             backgroundColor: "#75a0b5",
-            translateX: "-=60vw",
+            translateX: endPoint,
             duration: 1000,
             easing: "easeOutQuart"
           })
@@ -53,7 +59,7 @@ export default {
           if(window.scrollY < (window.innerHeight / 3)) {
             this.$scrollTo(document.getElementById("start"), 1000)
           }
-        }, 1600);
+        }, 1300);
       }
     })
     .exec(async() => {
@@ -64,6 +70,9 @@ export default {
     .break()
     // .pause(200)
     .type('}')
+    // .options({
+    //   cursorSpeed: 0
+    // })
     .pause(500)
     .exec(async() => {
       document.getElementsByClassName("ti-cursor")[0].style.animation = "none";
@@ -81,23 +90,23 @@ export default {
 <style lang="scss">
   #typewriter {
     margin: 0 auto;
-    position: relative;
+    /*position: relative;*/
     /*top: 40vh;*/
     min-height: 4em;
     height: 20vh;
     text-align: left;
     line-height: 1.25;
-    width: 100%;
+    max-width: 100%;
+    width: 26em;
     padding: 10px;
     color: #fff;
     font-size: 1em;
     @include mq("small-phone") {
-      font-size: 1.3em;
+      font-size: 1.2em;
     }
     box-sizing: border-box;
     @include mq("phone") {
       font-size: 1.6em;
-      width: 700px;
     }
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     a {

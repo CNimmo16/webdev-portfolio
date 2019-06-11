@@ -14,7 +14,7 @@
             
             <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 4 }" v-scroll-to="'#contact'" @click.stop="$emit('close-nav')">Work with me</a>
             <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#projects">Work with me</router-link>
-            <router-link :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/blog">Blog</router-link>
+            <!--<router-link :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/blog">Blog</router-link>-->
         </div>
     </div>
 </template>
@@ -72,6 +72,9 @@ export default {
                     break;
                 case 3:
                     color = "grey";
+                    break;
+                case 4:
+                    color = "light";
                     break;
             }
             return color;

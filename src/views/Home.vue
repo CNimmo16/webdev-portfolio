@@ -35,19 +35,20 @@ export default {
   },
   methods: {
     handleScroll() {
+      const pages = ["intro", "start", "projects", "lab", "contact"]
+      let i = pages.slice().reverse().findIndex((page) => {
+        const pagePos = window.document.getElementById(page).getBoundingClientRect().top - window.document.body.getBoundingClientRect().top
+        return pagePos < window.scrollY + 40
+      })
+      var count = pages.length - 1
+      var finalIndex = i >= 0 ? count - i : 0;
       var payload = {
         scrollTop: window.scrollY,
-        page: Math.floor((window.scrollY + 40) / window.innerHeight)
+        page: finalIndex
       };
       this.$store.commit('setScroll', payload);
-      const pages = ["intro", "start", "projects", "lab", "get-in-touch"]
+      
       window.history.replaceState(null, ("page " + payload.page), "#" + pages[payload.page])
-      // if(payload.page === 1) {
-      //   this.$scrollLock.lock();
-      //   console.log("lock")
-      // } else {
-      //   this.$scrollLock.unlock();
-      // }
     }
   },
   created() {
