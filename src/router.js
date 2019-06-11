@@ -31,5 +31,10 @@ export default new Router({
       name: 'IndoMap',
       component: IndoMap
     },
+    {
+      path: '*',
+      name: 'catch',
+      redirect: "/"
+    },
   ]
 })
