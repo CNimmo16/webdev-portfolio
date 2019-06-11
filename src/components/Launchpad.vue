@@ -31,25 +31,25 @@
                 <li><img src="@/assets/skill-icons/node.png">An efficient, modern NodeJS backend if needed, built on a well structured NoSQL database.</li>
             </ul>
         </div>
-        <div class="down-button" v-scroll-to="{
-            el: '#projects',
-            easing: 'ease',
-            duration: 1000
-        }">
-            <span>Scroll to see my work</span>
-            <svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" height="40" width="100" version="1.1" viewBox="0 0 26.458333 10.583247">
-             <linearGradient id="svg-gradient" x2="1" y2="1">
-                <stop offset="0%" stop-color="#fff" />
-                <stop offset="20%" stop-color="#ddd" />
-                <stop offset="100%" stop-color="#fff" />
-              </linearGradient>
-             <g transform="translate(-.0050005 -286.42)">
-              <g transform="matrix(.26458 0 0 .25993 -10.111 261.77)">
-               <path d="m138.14 95.001-49.952 29.229-49.864-29.229l-0.000013 11.22 49.862 29.228 49.954-29.228z" fill-opacity="0" stroke="#fff" stroke-width=".18438"/>
-              </g>
-             </g>
-            </svg>
-        </div>
+        <!--<div class="down-button" v-scroll-to="{-->
+        <!--    el: '#projects',-->
+        <!--    easing: 'ease',-->
+        <!--    duration: 1000-->
+        <!--}">-->
+        <!--    <span>Scroll to see my work</span>-->
+        <!--    <svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" height="40" width="100" version="1.1" viewBox="0 0 26.458333 10.583247">-->
+        <!--     <linearGradient id="svg-gradient" x2="1" y2="1">-->
+        <!--        <stop offset="0%" stop-color="#fff" />-->
+        <!--        <stop offset="20%" stop-color="#ddd" />-->
+        <!--        <stop offset="100%" stop-color="#fff" />-->
+        <!--      </linearGradient>-->
+        <!--     <g transform="translate(-.0050005 -286.42)">-->
+        <!--      <g transform="matrix(.26458 0 0 .25993 -10.111 261.77)">-->
+        <!--       <path d="m138.14 95.001-49.952 29.229-49.864-29.229l-0.000013 11.22 49.862 29.228 49.954-29.228z" fill-opacity="0" stroke="#fff" stroke-width=".18438"/>-->
+        <!--      </g>-->
+        <!--     </g>-->
+        <!--    </svg>-->
+        <!--</div>-->
     </section>
 </template>
 
