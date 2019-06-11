@@ -17,11 +17,6 @@ export default new Router({
       component: Home
     },
     {
-      path: '/message-sent',
-      name: 'FormSentConfirm',
-      component: FormSentConfirm
-    },
-    {
       path: '/blog',
       name: 'blog',
       component: Blog

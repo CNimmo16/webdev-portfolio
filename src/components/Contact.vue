@@ -2,7 +2,7 @@
     <section id="contact" class="section section--light">
         <div class="section__content section__content--compact">
             <h2 class="title title--big">Let's make something beautiful together... <br> Get in touch.</h2>
-            <form action="/message-sent" name="contact" method="POST" data-netlify="true">
+            <form action="https://formspree.io/cameronnimmo@hotmail.co.uk" method="POST">
                 <div class="name">
                     <label for="name">Name *</label>
                     <input v-validate="'required'" type="text" name="name" id="name" required>
