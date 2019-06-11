@@ -1,7 +1,7 @@
 <template>
-  <div id="intro" class="home section">
+  <section id="intro" class="section section--dark section--floating">
     <p id="typewriter"></p>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -13,8 +13,9 @@ export default {
   mounted() {
     var tl = this.$anime.timeline({
       easing: 'easeOutExpo',
-      duration: 750,
+      // duration: 750,
     });
+    var qualities = ['"versatile"', '"responsive"', '"an eye for design"']
     new this.$typeit('#typewriter', {
       speed: 80,
       deleteSpeed: 80,
@@ -23,23 +24,26 @@ export default {
       html: true,
       cursorChar: "|",
       afterComplete: () => {
-        document.getElementsByClassName("ti-cursor")[0].classList.add("block");
-        document.getElementsByClassName("ti-cursor")[0].style.width = "0.2ch";
+        var cursor = document.getElementsByClassName("ti-cursor")[0];
+        cursor.classList.add("block");
+        cursor.style.width = "0.2ch";
+        cursor.style.backgroundColor = "#fff";
         window.setTimeout(() => {
           tl.add({
-            targets: document.getElementsByClassName("ti-cursor")[0],
-            translateX: "300px"
+            targets: cursor,
+            translateX: "50vw"
           })
           .add({
-            targets: document.getElementsByClassName("ti-cursor")[0],
-            width: "120vw",
+            targets: cursor,
+            width: "100vw",
             height: "60vh",
+            backgroundColor: "#75a0b5",
             translateX: "-=60vw",
             duration: 1000,
             easing: "easeOutQuart"
           })
           .add({
-            targets: document.getElementsByClassName("ti-cursor")[0],
+            targets: cursor,
             opacity: 0,
             duration: 1000,
             delay: 500
@@ -55,8 +59,8 @@ export default {
     .exec(async() => {
       document.getElementsByClassName("ti-cursor")[0].style.left = "-0.8ch";
     })
-    .type('<span style="color: #cc99cd;">var </span>').pause(50).type('c_nimmo <span style="color: #67cdcc">= </span>').pause(50).type('<span style="color: #cc99cd;">junior </span>').pause(100).type('<span style="color: #f8c555">WebDeveloper()</span> {').break().pause(200).type('<span style="color: #f08d49; padding-left: 4ch;">return </span>').pause(300).type('<span style="color: #a9eca6">"dedicated"</span><span style="color: #fff">;</span>').pause(700).delete(12).pause(200).type('<span style="color: #a9eca6">"versatile"</span><span style="color: #fff">;</span>').pause(700).delete(12).pause(200).type('<span style="color: #a9eca6">"an eye for design"</span><span style="color: #fff">;</span>')
-    // .pause(500)
+    .type('<span style="color: #cc99cd;">var </span>').pause(50).type('c_nimmo <span style="color: #67cdcc">= </span>').pause(50).type('<span style="color: #cc99cd;">fullStack </span>').pause(100).type('<span style="color: #f8c555">WebDeveloper()</span> {').break().pause(200).type('<span style="color: #f08d49; padding-left: 4ch;">return </span>').pause(300).type('<span style="color: #a9eca6">' + qualities[0] + '</span><span style="color: #fff">;</span>').pause(700).delete(qualities[0].length+1).pause(200).type('<span style="color: #a9eca6">' + qualities[1] + '</span><span style="color: #fff">;</span>').pause(700).delete(qualities[1].length+1).pause(200).type('<span style="color: #a9eca6">' + qualities[2] + '</span><span style="color: #fff">;</span>')
+    .pause(200)
     .break()
     // .pause(200)
     .type('}')
@@ -75,22 +79,26 @@ export default {
 </script>
 
 <style lang="scss">
-  #intro {
-    background-color: $palette-background;
-  }
   #typewriter {
     margin: 0 auto;
     position: relative;
-    top: 40vh;
+    /*top: 40vh;*/
     min-height: 4em;
     height: 20vh;
     text-align: left;
     line-height: 1.25;
-    width: 600px;
-    background-color: $palette-background;
+    width: 100%;
     padding: 10px;
     color: #fff;
-    font-size: 1.6em;
+    font-size: 1em;
+    @include mq("small-phone") {
+      font-size: 1.3em;
+    }
+    box-sizing: border-box;
+    @include mq("phone") {
+      font-size: 1.6em;
+      width: 700px;
+    }
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     a {
       color: #fff;
@@ -103,7 +111,7 @@ export default {
     top: -2px;
     &.block {
       display: block !important;
-      background-color: $launchpad-color;
+      background-color: #fff;
       left: 0;
       top: 3px;
       color: #282c34 !important;

@@ -1,18 +1,34 @@
 <template>
-    <div id="start" class="home section">
-        <div class="intro-text">
-            <h1>Hi, I'm Cameron,</h1>
+    <section id="start" class="section section--blue section--floating">
+        <div class="section__content section__content--compact">
+            <h1 class="title title--medium title--shadow">Hi, I'm Cameron,</h1>
             
-            <h2 @mouseleave="mouseoutParent($event.target)">
-                <span v-for="(letter, index) in titleText" :key="index" class="title-letter" @mouseenter="letterRaise($event.target)">{{ letter }}</span>
+            <h2 class="title title--big title--shadow" v-show="!isPhone">
+                <span v-for="(letter, index) in titleText.slice(0,38)" :key="index" class="title-letter">{{ letter }}</span>
+                <br>
+                <span v-for="(letter, index) in titleText.slice(39)" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
             </h2>
-            <p>After a two year hiatus of travelling and part time jobs trying to work out what I enjoyed doing, I tried out a udemy course in web development and realised it was this. After spending <span>{{ "2018-12-11" | moment("from", "now", true) }}</span> studying web development independently, I am: 
+            <h2 class="title title--big title--shadow" v-show="isPhone">
+                <span v-for="(letter, index) in titleText.slice(0,20)" :key="index" class="title-letter">{{ letter }}</span>
+                <br>
+                <span v-for="(letter, index) in titleText.slice(21)" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
+            </h2>
+            <!--<p>After a two year hiatus of travelling and part time jobs trying to work out what I enjoyed doing, I tried out a udemy course in web development and realised it was this. After spending <span>{{ "2018-12-11" | moment("from", "now", true) }}</span> studying web development independently, I am: -->
+            <!--</p>-->
+            <!--<ul class="employer skills">-->
+            <!--    <li><img src="@/assets/skill-icons/html5.png"><span>proficient in HTML5 and CSS including layout, design and animation.</span></li>-->
+            <!--    <li><img src="@/assets/skill-icons/js.png"><span>skilled at using JavaScript, able to make full use of ES6 and newer features where possible and beneficial.</span></li>-->
+            <!--    <li><img src="@/assets/skill-icons/vue.png"><span>able to use Vue JS to build Single Page Applications with SSR implementation if needed.</span></li>-->
+            <!--    <li><img src="@/assets/skill-icons/node.png"><span>able to build and deploy a full-stack site from scratch using Node JS (Express) and MongoDB.</span></li>-->
+            <!--</ul>-->
+            <p class="para para--shadow">It's 2019: no one should still have to pick between a website that looks beautiful, and one that works beautifully. I love creating rich, immersive Javascript powered web applications that look great. But I also work hard to ensure beauty doesn't come at the expense of responsiveness or usability.
             </p>
-            <ul class="skills">
-                <li><img src="@/assets/skill-icons/html5.png"><span>proficient in HTML5 and CSS including layout, design and animation.</span></li>
-                <li><img src="@/assets/skill-icons/js.png"><span>skilled at using JavaScript, both ES6 focused and with knowledge of fallback syntax.</span></li>
-                <li><img src="@/assets/skill-icons/vue.png"><span>able to use Vue JS to build Single Page Applications with SSR implementation if needed.</span></li>
-                <li><img src="@/assets/skill-icons/node.png"><span>able to build and deploy a full-stack site from scratch using Node JS (Express) and MongoDB.</span></li>
+            <h3 class="title title--small title--shadow">I build sites with... </h3>
+            <ul class="list list--shadow freelance skills">
+                <li><img src="@/assets/skill-icons/html5.png">Highly semantic markup and object oriented styling which is a pleasure to read, and a breeze to maintain.</li>
+                <li><img src="@/assets/skill-icons/js.png">Javascript that is well optimised, but sparingly used, with minimal dependency on external libraries, boosting code reliability and reducing maintenance work</li>
+                <li><img src="@/assets/skill-icons/gsap.png">Thoughtful and intuitive ui animation effects to snazz things up and/or improve usability</li>
+                <li><img src="@/assets/skill-icons/node.png">An efficient, modern NodeJS backend if needed, built on a well structured NoSQL database.</li>
             </ul>
         </div>
         <div class="down-button" v-scroll-to="{
@@ -34,103 +50,121 @@
              </g>
             </svg>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
-import _ from "lodash";
+// import _ from "lodash";
 
     export default {
         name: "launchpad",
         data() {
             return {
                 startDate: "2013-02-08",
-                titleText: "I'm a self-taught junior web developer currently looking for work",
-                interactive: false
+                titleText: "I'm a full-stack web developer",
+                interactive: false,
+                isPhone: null,
+                animating: false
+            }
+        },
+        computed: {
+            pageInView() {
+                return this.$store.state.page
+            }
+        },
+        watch: {
+            pageInView: function(newValue, oldValue) {
+                if(newValue === 1 && oldValue !== 1 && !this.animating) {
+                    this.beginAnimation();
+                }
             }
         },
         mounted() {
-            let entrance = this.$anime.timeline({
-                complete: () => {
-                    this.interactive = true;
-                }
-            });
-        
-            entrance
-            .add({
-                targets: ".intro-text h1",
-                translateY: [60, 0],
-                opacity: 1
-            }, 500)
-            .add({
-                targets: ".intro-text .title-letter",
-                scale: [0, 1],
-                elasticity: 600,
-                duration: 700,
-                delay: this.$anime.stagger(15)
-            }, 1000)
-            .add({
-                targets: ".intro-text p",
-                translateY: [-20, 0],
-                duration: 1000,
-                easing: "easeOutQuad"
-            }, "-=600")
-            .add({
-                targets: ".intro-text p",
-                opacity: 1,
-                duration: 1000,
-                easing: "linear"
-            }, "-=1000")
-            .add({
-                targets: ".intro-text .skills li",
-                opacity: 1,
-                scale: [0, 1],
-                elasticity: 200,
-                duration: 1200,
-                delay: this.$anime.stagger(1300),
-                complete: () => {
-                    let entrance = this.$anime.timeline({
-                        loop: true,
-                    })
-                    
-                    entrance
-                    .add({
-                        targets: ".intro-text .title-letter",
-                        keyframes: [
-                            {translateY: 0},
-                            {translateY: -6},
-                            {translateY: 0},
-                        ],
-                        elasticity: 200,
-                        duration: 200,
-                        easing: "easeInOutQuad",
-                        delay: this.$anime.stagger(20, {start: 1000})
-                    })
-                    .add({
-                        targets: ".intro-text .skills li img",
-                        keyframes: [
-                            {translateY: 0},
-                            {translateY: -5},
-                            {translateY: 0},
-                        ],
-                        elasticity: 200,
-                        duration: 500,
-                        easing: "easeInOutQuad",
-                        delay: this.$anime.stagger(130)
-                    })
-                }
-            }, "+=2000")
+            this.isPhone = window.innerWidth < 615;
+            window.addEventListener("resize", () => {
+                const oldVal = this.isPhone;
+                this.isPhone = window.innerWidth < 615
+                // if(this.isPhone !== oldVal) {
+                    for(const letter of document.getElementsByClassName("title-letter")) {
+                        letter.style.transform = "scale(1) translateY(0)" 
+                    }
+                // }
+            })
         },
-        // computed: {
-        //     titleArray: function() {
-        //         let array = [];
-        //         for(let i=0; i<this.titleText.length; i++) {
-        //             array.push(this.titleText.slice(i, i+1));
-        //         }
-        //         return array;
-        //     }
-        // },
         methods: {
+            beginAnimation() {
+                this.animating = true;
+                let entrance = this.$anime.timeline({
+                    complete: () => {
+                        this.interactive = true;
+                    }
+                });
+            
+                entrance
+                .add({
+                    targets: "#start h1",
+                    translateY: [60, 0],
+                    opacity: 1
+                }, 0)
+                .add({
+                    targets: "#start .title-letter",
+                    scale: [0, 1],
+                    elasticity: 600,
+                    duration: 700,
+                    delay: this.$anime.stagger(15)
+                }, 1000)
+                .add({
+                    targets: "#start p",
+                    translateY: [-20, 0],
+                    duration: 1000,
+                    easing: "easeOutQuad"
+                }, "-=600")
+                .add({
+                    targets: "#start p",
+                    opacity: 1,
+                    duration: 1000,
+                    easing: "linear"
+                }, "-=1000")
+                .add({
+                    targets: "#start .skills li",
+                    opacity: 1,
+                    scale: [0, 1],
+                    elasticity: 200,
+                    duration: 1200,
+                    delay: this.$anime.stagger(1300),
+                    complete: () => {
+                        let entrance = this.$anime.timeline({
+                            loop: true,
+                        })
+                        
+                        entrance
+                        .add({
+                            targets: "#start .title-letter",
+                            keyframes: [
+                                {translateY: 0},
+                                {translateY: -6},
+                                {translateY: 0},
+                            ],
+                            elasticity: 200,
+                            duration: 200,
+                            easing: "easeInOutQuad",
+                            delay: this.$anime.stagger(20, {start: 1000})
+                        })
+                        .add({
+                            targets: "#start .skills li img",
+                            keyframes: [
+                                {translateY: 0},
+                                {translateY: -5},
+                                {translateY: 0},
+                            ],
+                            elasticity: 200,
+                            duration: 500,
+                            easing: "easeInOutQuad",
+                            delay: this.$anime.stagger(130),
+                        })
+                    }
+                }, "+=2000")
+            },
             getOffset( el ) {
                 var _x = 0;
                 var _y = 0;
@@ -141,104 +175,40 @@ import _ from "lodash";
                 }
                 return { top: _y, left: _x };
             },
-            // letterRaise: _.throttle(function(elem) {
-            //     // if(this.interactive && elem.matches(".title-letter")) {
-            //     if(elem.matches(".title-letter")) {
-            //         const parent = elem.parentElement;
-            //         const elemIndex = Array.prototype.indexOf.call(parent.children, elem);
-            //         for(let i=0; i<7; i++) {
-            //             if(elemIndex - i > 0 && elemIndex + i < parent.children.length) {
-            //                 let val = ((1 / 3 / (i+1)) + 1);
-            //                 parent.children[elemIndex + i].style.transform = "scale(" + val + ")";
-            //                 parent.children[elemIndex - i].style.scale = "scale(" + val + ")";
-            //             }
-            //         }
-            //     }
-            // }, 5),
-            // mouseoutParent(parent) {
-            //     if(this.interactive) {
-            //         for(let i=0; i<parent.children.length; i++) {
-            //             this.$anime({
-            //                 targets: parent.children[i],
-            //                 scale: 1
-            //             }) 
-            //         }
-            //     }
-            // }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    
 
-    #start {
-        position: relative;
-        display: flex;
-        align-items: center;
-        background-color: $launchpad-color;
-        @include mq("large-phone", "max") {
-            height: auto;
+        .title-letter {
+            display: inline-block;
+            transform: scale(0);
+            opacity: 1;
+            min-width: 0.7ch;
+            transform-origin: 20% 150%;
         }
-        /*@include mq("small-monitor", "max") {*/
-        /*    height: 130vh*/
-        /*}*/
-        min-height: fit-content;
-        box-sizing: border-box;
-        padding-top: 100px;
-        padding-bottom: 170px;
-    }
-    .intro-text {
-        width: fit-content;
-        max-width: 1000px;
-        color: #eaf1f5;
-        @include mq("small-monitor") {
-            max-width: 800px;
-        }
-        max-height: 100%;
-        padding: 0 5%;
-        margin: 0 auto;
-        h1, h2 {
-            text-shadow: -2px 3px 0px #385b6d;
-        }
-        h1 {
+        #start p {
             opacity: 0;
-        }
-        h2 {
-            font-size: 2em;
-            @include mq("small-monitor") {
-                font-size: 36px;
-            }
-            span {
-                display: inline-block;
-                opacity: 1;
-                min-width: 0.7ch;
-                transform-origin: 20% 150%;
-            }
         }
         ul.nutshell {
             display: flex;
             width: 100%;
             li {
                 padding: 0 10px;
-                color: $palette-background-secondary;
+                color: $palette-background-light;
                 &:nth-of-type(1) {
                     padding-left: 0;
                 }
             }
         }
-        p {
-            padding-top: 0px;
-            padding-bottom: 20px;
-            opacity: 0;
-        }
         ul.skills {
             font-size: 1em;
             font-weight: 400;
-            /*letter-spacing: 0.1em;*/
+            letter-spacing: 0.03em;
             li {
                 opacity: 0;
-                padding-bottom: 30px;
+                padding-bottom: 35px;
                 display: flex;
                 align-items: center;
                 @include mq("large-phone") {
@@ -264,5 +234,4 @@ import _ from "lodash";
                 }
             }
         }
-    }
 </style>

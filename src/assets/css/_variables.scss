@@ -1,4 +1,5 @@
 $breakpoints: (
+    "small-phone":  430px,
     "phone":        768px,
     "large-phone":    948px,
     "tablet":       1024px,
@@ -29,6 +30,8 @@ $breakpoints: (
 %font-slabo {
     font-family: "Slabo 27px", Helvetica, sans-serif;
     font-size: 27px;
+    text-align: left;
+    letter-spacing: 0.13em;
 }
 
 %font-merri {
@@ -42,15 +45,17 @@ $x-swatch-lightgrey: #a9a9a9;
 $x-swatch-darkblue: #001746;
 $x-swatch-lightblue: #f3f7f9;
 
-$palette-background: $x-swatch-darkgrey;
-$palette-primary: $x-swatch-darkgrey;
-$palette-background-secondary: $x-swatch-darkblue;
-$palette-background-tertiary: $x-swatch-lightblue;
+// $x-swatch-midblue: #648A9D;
+$x-swatch-midblue: #75a0b5;
 
-// $launchpad-color: $palette-background-tertiary;
-// $projects-color: $palette-background;
-// $launchpad-color: #235269;
-$launchpad-color: #648A9D;
-$projects-color: $palette-background-tertiary;
+$palette-background-dark: $x-swatch-darkgrey;
+$palette-background-blue: $x-swatch-midblue;
+$palette-background-light: $x-swatch-lightblue;
+
+$palette-text-dark: $x-swatch-darkgrey;
+$palette-text-light: $x-swatch-lightblue;
+$palette-text-blue: #385b6d;
+
+$palette-lab-yellow: #ce8e15;
 
 $palette-secondary: $x-swatch-lightgrey;

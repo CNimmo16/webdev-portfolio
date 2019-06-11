@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Blog from './views/Blog.vue'
+import IndoMap from './views/IndoMap.vue'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/blog',
       name: 'blog',
       component: Blog
+    },
+    {
+      path: '/interactive-indonesia',
+      name: 'IndoMap',
+      component: IndoMap
     },
   ]
 })

@@ -5,7 +5,8 @@
     <Projects />
     <!--<Void />-->
     <Lab />
-    <div class="count">{{ currentPage }}</div>
+    <Contact />
+    <!--<div class="count">{{ currentPage }}</div>-->
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import Launchpad from "@/components/Launchpad.vue"
 import Projects from "@/components/Projects.vue"
 // import Void from "@/components/Void.vue"
 import Lab from "@/components/Lab.vue"
+import Contact from "@/components/Contact.vue"
 
 import debounce from 'lodash/debounce';
 
@@ -25,7 +27,8 @@ export default {
     Launchpad,
     Projects,
     // Void,
-    Lab
+    Lab,
+    Contact
   },
   mounted() {
     this.handleScroll()
@@ -37,7 +40,7 @@ export default {
         page: Math.floor((window.scrollY + 40) / window.innerHeight)
       };
       this.$store.commit('setScroll', payload);
-      const pages = ["intro", "start", "projects", "lab"]
+      const pages = ["intro", "start", "projects", "lab", "get-in-touch"]
       window.history.replaceState(null, ("page " + payload.page), "#" + pages[payload.page])
       // if(payload.page === 1) {
       //   this.$scrollLock.lock();

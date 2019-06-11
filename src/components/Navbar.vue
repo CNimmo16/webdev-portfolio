@@ -1,18 +1,20 @@
 <template>
-    <div id="navbar">
+    <div id="navbar" :class="{ open: open }">
         <div id="nav-sensor" @mouseenter="moused = true"  :class="{ fullscreen: fullscreenSensor }"></div>
         <div id="nav" :class="{ show: showNav }" @mouseleave="moused = false">
             
-            <a v-if="isHome" :class="{ dark: isNavDark(), 'router-link-exact-active': currentPage === 1 }" v-scroll-to="'#start'">Home</a>
-            <router-link v-else :class="{ dark: isNavDark() }" to="/">Home</router-link>
+            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 1 }" v-scroll-to="'#start'" @click.stop="$emit('close-nav')">Home</a>
+            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/">Home</router-link>
             
-            <a v-if="isHome" :class="{ dark: isNavDark(), 'router-link-exact-active': currentPage === 2 }" v-scroll-to="'#projects'">Projects</a>
-            <router-link v-else :class="{ dark: isNavDark() }" to="/#projects">Projects</router-link>
+            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 2 }" v-scroll-to="'#projects'" @click.stop="$emit('close-nav')">Projects</a>
+            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#projects">Projects</router-link>
             
-            <a v-if="isHome" :class="{ dark: isNavDark(), 'router-link-exact-active': currentPage === 3 }" v-scroll-to="'#lab'">Experiments</a>
-            <router-link v-else :class="{ dark: isNavDark() }" to="/#projects">Experiments</router-link>
+            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 3 }" v-scroll-to="'#lab'" @click.stop="$emit('close-nav')">The Lab</a>
+            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#projects">The Lab</router-link>
             
-            <router-link :class="{ dark: isNavDark() }" to="/blog">Blog</router-link>
+            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 4 }" v-scroll-to="'#contact'" @click.stop="$emit('close-nav')">Work with me</a>
+            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#projects">Work with me</router-link>
+            <router-link :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/blog">Blog</router-link>
         </div>
     </div>
 </template>
@@ -25,6 +27,12 @@ export default {
             moused: false,
             isHome: true
         }
+    },
+    props: ["open"],
+    watch: {
+      open(newVal) {
+        this.showNav = newVal;
+      }
     },
     mounted() {
         this.isHome = (this.$router.currentRoute.name === "home") ? true : false;
@@ -40,7 +48,7 @@ export default {
             if(this.moused === true) {
                 return true;
             } else {
-                if(this.scrollTop < 30) {
+                if(this.scrollTop < 30 && this.isHome) {
                     return false;
                 } else {
                     return true;
@@ -49,6 +57,24 @@ export default {
         },
         fullscreenSensor() {
             return (this.$store.state.page === 0) ? true : false;
+        },
+        pageColor() {
+            var color = null;
+            switch(this.currentPage) {
+                case 0:
+                    color = "grey";
+                    break;
+                case 1:
+                    color = "blue";
+                    break;
+                case 2:
+                    color = "light";
+                    break;
+                case 3:
+                    color = "grey";
+                    break;
+            }
+            return color;
         }
     },
     watch: {
@@ -57,18 +83,7 @@ export default {
         }
     },
     methods: {
-        isNavDark() {
-            switch(this.currentPage) {
-                case 0:
-                    return false;
-                case 1:
-                    return true;
-                case 2:
-                    return false;
-                case 3:
-                    return true;
-            }
-        }
+        
     }
 }
 </script>
@@ -86,8 +101,41 @@ export default {
     position: fixed;
     width: 100%;
     z-index: 20;
+    overflow: hidden;
+    transition: height 0.5s;
     @extend %nav-height;
+    @include mq("phone", "max") {
+      display: flex;
+      height: 0 !important;
+      padding: 0 !important;
+      &.open {
+        height: 100vh !important;
+      }
+      padding: 100px 0;
+      background-color: $palette-background-blue;
+      width: 100vw;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      box-sizing: border-box;
+      #nav {
+        flex-direction: column;
+        height: auto;
+        align-items: flex-start;
+        width: fit-content;
+        position: relative;
+        a {
+            color: $palette-text-light !important;              
+            text-shadow: 3px 2px 0px $palette-text-blue;
+            border-left: 3px solid $palette-text-blue !important;
+            padding: 5px 18px !important;
+            margin: 10px 0;
+            font-size: 2.5em;
+        }
+      }
+    }
 }
+
 #nav-sensor {
   position: fixed;
   @extend %nav-height;
@@ -109,32 +157,41 @@ export default {
   a {
     cursor: pointer;
     padding: 0 15px;
-    color: $palette-secondary;
     font-weight: bold;
     @extend %font-slabo;
     text-decoration: none;
     letter-spacing: 3px;
     text-transform: uppercase;
     transition: color 0.3s, border-left 0.3s;
-    &.dark {
-        /*color: #000;*/
+    color: #8c8c8c;
+    &.blue {
+        color: #e5f4ff
+    }
+    + a {
+      border-left: 2px solid $palette-text-light;
+      &.light {
+        border-left: 2px solid #ccc;
+      }
+      &.blue {
+        border-left: 2px solid #e5f4ff;
+      }
     }
     &.router-link-exact-active {
-      color: #fff;
-      &.dark {
-          color: $palette-primary;
+      color: $palette-text-dark;
+      text-shadow: -1px 2px 0px #648a9d;
+      &.grey {
+          color: #fff;
+          text-shadow: -1px 2px 0px $palette-lab-yellow;
+      }
+      &.blue {
+          color: #fff;
+          text-shadow: -1px 2px 0px #222;
       }
     }
     &:hover {
-      color: #fff;
-      &.dark {
-          color: #000;
-      }
-    }
-    + a {
-      border-left: 2px solid #fff;
-      &.dark {
-          border-left: 2px solid #000;
+      color: $palette-text-dark;
+      &.grey, &.blue {
+          color: #fff;
       }
     }
   }

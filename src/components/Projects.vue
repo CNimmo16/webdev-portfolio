@@ -1,9 +1,13 @@
 <template>
-    <div id="projects"  class="home section">
-        <div class="grid">
-            <ProjectItem v-for="(project, index) in projectData" :project="project" :key="index" />
+    <section id="projects"  class="section section--light">
+        <div class="section__content">
+            <h1 class="section__header">Projects</h1>
+            <p class="section__intro">Check out my latest work</p>
+            <div class="showcase">
+                <ProjectItem v-for="(project, index) in projectData" :project="project" :key="index" />
+            </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -51,9 +55,10 @@
                         ref: "indonesia",
                         titleMain: "Trip the Distance - Indonesia",
                         titleExtra: "Trip the Distance - Indonesia",
-                        details: "I designed, developed and deployed the Indonesia site for the tripthedistance.com travel blog.",
+                        details: "I designed, developed and deployed the Indonesia site for the tripthedistance.com travel blog, running on a Express based custom CMS built from scratch.",
                         images: [require("@/assets/projects/indonesia/monitor.png"), require("@/assets/projects/indonesia/ipad2.png"), require("@/assets/projects/indonesia/iphone2.png")],
-                        tags: [this.icons.html5, this.icons.js, this.icons.node, this.icons.ck]
+                        tags: [this.icons.html5, this.icons.js, this.icons.node, this.icons.ck],
+                        href: "https://indonesia.tripthedistance.com"
                     },
                     {
                         ref: "japan",
@@ -61,33 +66,11 @@
                         titleExtra: "Trip the Distance - Japan",
                         details: "I designed, developed and deployed the Japan site for the tripthedistance.com travel blog.",
                         images: [require("@/assets/projects/japan/monitor.png"), require("@/assets/projects/japan/ipad.png"), require("@/assets/projects/japan/iphone.png")],
-                        tags: [this.icons.vue, this.icons.nuxt]
+                        tags: [this.icons.vue, this.icons.nuxt],
+                        href: "https://japan.tripthedistance.com"
                     },
                 ]
             }
         }
     }
 </script>
-
-<style lang="scss" scoped>
-    @import '@/assets/css/_variables.scss';
-
-    #projects {
-        background-color: $projects-color;
-        min-height: 100vh;
-        height: auto;
-        .grid {
-            display: flex;
-            flex-wrap: wrap;
-            width: 100%;
-            @include mq("phone") {
-                width: 90%;
-            }
-            @include mq("small-monitor") {
-                width: 80%;
-            }
-            margin: 0 auto;
-            padding-top: 100px;
-        }
-    }
-</style>
