@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Blog from './views/Blog.vue'
 import IndoMap from './views/IndoMap.vue'
+import FormSentConfirm from './views/FormSentConfirm.vue'
 
 Vue.use(Router)
 
@@ -14,6 +15,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/message-sent',
+      name: 'FormSentConfirm',
+      component: FormSentConfirm
     },
     {
       path: '/blog',
