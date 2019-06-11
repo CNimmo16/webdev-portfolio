@@ -112,7 +112,7 @@
                     elasticity: 600,
                     duration: 700,
                     delay: this.$anime.stagger(15)
-                }, 1000)
+                }, 700)
                 .add({
                     targets: "#start p",
                     translateY: [-20, 0],
@@ -125,6 +125,14 @@
                     duration: 1000,
                     easing: "linear"
                 }, "-=1000")
+                .add({
+                    targets: "#start h3",
+                    opacity: 1,
+                    translateX: ["-50vw", 0],
+                    skew: ["15deg", "0deg"],
+                    duration: 800,
+                    easing: "easeOutElastic()"
+                }, "+=700")
                 .add({
                     targets: "#start .skills li",
                     opacity: 1,
@@ -163,7 +171,7 @@
                             delay: this.$anime.stagger(130),
                         })
                     }
-                }, "+=2000")
+                })
             },
             getOffset( el ) {
                 var _x = 0;
@@ -181,6 +189,9 @@
 
 <style lang="scss" scoped>
 
+        h1, h3 {
+            opacity: 0;
+        }
         .title-letter {
             display: inline-block;
             transform: scale(0);

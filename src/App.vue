@@ -106,8 +106,8 @@
     }
   }
   &.grey .bar { background-color: $palette-text-light; }
-  &.blue .bar { background-color: $palette-text-dark; }
-  &.light .bar { background-color: $palette-text-blue; }
+  &.blue .bar { background-color: $palette-text-blue; }
+  &.light .bar { background-color: #487084; }
   &.close {
     .bar {
       background-color: $palette-text-blue;
