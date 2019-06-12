@@ -66,7 +66,7 @@
                         details: "Ripple is a concept interface for an immersive music streaming service.",
                         images: [require("@/assets/projects/lab/ripple/mouse-centre.png"), require("@/assets/projects/lab/ripple/mouse-left.png"), require("@/assets/projects/lab/ripple/mouse-right.png")],
                         tags: [this.icons.vue, this.icons.js, this.icons.gsap],
-                        href: "https://naughty-knuth-5f773d.netlify.com"
+                        href: "/ripple-music"
                     },
                     {
                         ref: "interactive_indonesia",

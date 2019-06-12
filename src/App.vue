@@ -5,7 +5,8 @@
       <div class="bar"></div>
       <div class="bar"></div>
     </div>
-    <Navbar :open="navOpen" @close-nav="navOpen = false" />
+    <Navbar :open="navOpen" @close-nav="navOpen = false" :isHome="isHome" />
+    <ProjectNav v-if="!isHome" />
     <!--<transition :name="routeslide">-->
       <router-view/>
     <!--</transition>-->
@@ -13,16 +14,24 @@
 </template>
 
 <script>
-  import Navbar from "@/components/Navbar.vue"
+  import Navbar from "@/components/Navbar.vue";
+  import ProjectNav from "@/components/ProjectNav.vue";
 
   export default {
     name: "App",
     components: {
-      Navbar
+      Navbar,
+      ProjectNav
     },
     data() {
       return {
-        navOpen: false
+        navOpen: false,
+        isHome: null
+      }
+    },
+    watch: {
+      '$route.name' (to) {
+          this.isHome = (to === "home") ? true : false;
       }
     },
     computed: {
@@ -50,6 +59,9 @@
         }
         return color;
       }
+    },
+    mounted() {
+      this.isHome = (this.$router.currentRoute.name === "home") ? true : false;
     }
   }
 </script>
@@ -61,7 +73,7 @@
   font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: $palette-text-dark;
   overflow-x: hidden;
 }

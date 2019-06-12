@@ -12,7 +12,7 @@
                 </ul>
                 <p>
                     {{ project.details }}
-                    <a v-if="project.href" :href="project.href" target="_blank">Click to check it out</a>
+                    <router-link v-if="project.href" :to="project.href">Click to check it out</router-link>
                 </p>
             </div>
             <h3>{{ project.titleMain }}</h3>

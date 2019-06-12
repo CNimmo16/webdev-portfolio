@@ -10,10 +10,10 @@
             <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#projects">Projects</router-link>
             
             <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 3 }" v-scroll-to="'#lab'" @click.stop="$emit('close-nav')">The Lab</a>
-            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#projects">The Lab</router-link>
+            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#lab">The Lab</router-link>
             
             <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 4 }" v-scroll-to="'#contact'" @click.stop="$emit('close-nav')">Work with me</a>
-            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#projects">Work with me</router-link>
+            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#contact">Work with me</router-link>
             <!--<router-link :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/blog">Blog</router-link>-->
         </div>
     </div>
@@ -25,17 +25,13 @@ export default {
     data() {
         return {
             moused: false,
-            isHome: true
         }
     },
-    props: ["open"],
+    props: ["open", "isHome"],
     watch: {
       open(newVal) {
         this.showNav = newVal;
-      }
-    },
-    mounted() {
-        this.isHome = (this.$router.currentRoute.name === "home") ? true : false;
+      },
     },
     computed: {
         currentPage () {
@@ -60,29 +56,28 @@ export default {
         },
         pageColor() {
             var color = null;
-            switch(this.currentPage) {
-                case 0:
-                    color = "grey";
-                    break;
-                case 1:
-                    color = "blue";
-                    break;
-                case 2:
-                    color = "light";
-                    break;
-                case 3:
-                    color = "grey";
-                    break;
-                case 4:
-                    color = "light";
-                    break;
+            if(this.isHome) {
+              switch(this.currentPage) {
+                  case 0:
+                      color = "grey";
+                      break;
+                  case 1:
+                      color = "blue";
+                      break;
+                  case 2:
+                      color = "light";
+                      break;
+                  case 3:
+                      color = "grey";
+                      break;
+                  case 4:
+                      color = "light";
+                      break;
+              }
+            } else {
+              color = "light"
             }
             return color;
-        }
-    },
-    watch: {
-        '$route.name' (to) {
-            this.isHome = (to === "home") ? true : false;
         }
     },
     methods: {
