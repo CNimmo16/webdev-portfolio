@@ -1,5 +1,6 @@
 <template>
 	<section id="ripple" class="section section--light">
+		<ProjectNav />
 		<div class="section__content">
 			<h1 class="title title--big">Ripple Immersive Music Player</h1>
 			<p>Ripple is a concept interface for an immersive music streaming service. I wanted to create a music playback interface that was impressive to look at and fun to explore, a kind of homage to the title browsing page on Netflix's desktop site, but for music. </p>
@@ -32,7 +33,14 @@
 </template>
 
 <script>
-	
+	import ProjectNav from "@/components/ProjectNav.vue";
+
+
+	export default {
+		components: {
+			ProjectNav
+		}
+	}
 </script>
 
 <style lang="scss">

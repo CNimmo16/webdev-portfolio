@@ -6,7 +6,6 @@
       <div class="bar"></div>
     </div>
     <Navbar :open="navOpen" @close-nav="navOpen = false" :isHome="isHome" />
-    <ProjectNav v-if="!isHome" />
     <!--<transition :name="routeslide">-->
       <router-view/>
     <!--</transition>-->
@@ -15,18 +14,16 @@
 
 <script>
   import Navbar from "@/components/Navbar.vue";
-  import ProjectNav from "@/components/ProjectNav.vue";
 
   export default {
     name: "App",
     components: {
       Navbar,
-      ProjectNav
     },
     data() {
       return {
         navOpen: false,
-        isHome: null
+        isHome: null,
       }
     },
     watch: {

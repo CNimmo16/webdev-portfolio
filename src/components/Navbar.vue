@@ -10,7 +10,7 @@
             <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#projects">Projects</router-link>
             
             <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 3 }" v-scroll-to="'#lab'" @click.stop="$emit('close-nav')">The Lab</a>
-            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#lab">The Lab</router-link>
+            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': ($route.path === '/ripple-music' || $route.path === '/interactive-indonesia') }" to="/#lab">The Lab</router-link>
             
             <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 4 }" v-scroll-to="'#contact'" @click.stop="$emit('close-nav')">Work with me</a>
             <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#contact">Work with me</router-link>

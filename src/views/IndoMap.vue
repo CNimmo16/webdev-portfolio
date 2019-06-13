@@ -1,5 +1,6 @@
 <template>
 	<section id="map" class="section section--light">
+		<ProjectNav />
 		<div class="section__content">
 			<h1 class="title title--big">Interactive Indonesia</h1>
 			<p>I developed this Javascript based, fully explorable map of Indonesia for the tripthedistance.com travel blog. The map is built on the popular LeafletJS library, but uses a static image for the baselayer, rather than a tiled map layer.</p>
@@ -65,12 +66,15 @@
 
 <script>
 /* eslint-disable */
-
+	import ProjectNav from "@/components/ProjectNav.vue"
 
 	const L = require("leaflet");
 
 	export default {
 		name: "IndoMap",
+		components: {
+			ProjectNav
+		},
 		mounted() {
 			window.setTimeout(() => {
 				document.getElementById("fsinfo").classList.add("show");
