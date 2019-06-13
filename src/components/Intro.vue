@@ -15,7 +15,7 @@ export default {
       easing: 'easeOutExpo',
       // duration: 750,
     });
-    var qualities = ['"versatile"', '"responsive"', '"an eye for design"']
+    var qualities = ['"versatile"', '"dependable"', '"an eye for design"']
     new this.$typeit('#typewriter', {
       speed: 80,
       deleteSpeed: 80,
