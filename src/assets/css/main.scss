@@ -356,6 +356,11 @@ li {
 	line-height: 1.8;
 }
 
+a {
+    color: $palette-text-dark;
+    text-decoration: none;
+}
+
 button {
     outline: none;
     border: none;

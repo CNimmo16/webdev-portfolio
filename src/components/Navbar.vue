@@ -4,7 +4,7 @@
         <div id="nav" :class="{ show: showNav }" @mouseleave="moused = false">
             
             <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 1 }" v-scroll-to="'#start'" @click.stop="$emit('close-nav')">Home</a>
-            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/">Home</router-link>
+            <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#start">Home</router-link>
             
             <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 2 }" v-scroll-to="'#projects'" @click.stop="$emit('close-nav')">Projects</a>
             <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#projects">Projects</router-link>

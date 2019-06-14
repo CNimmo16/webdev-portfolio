@@ -6,6 +6,7 @@
       <div class="bar"></div>
     </div>
     <Navbar :open="navOpen" @close-nav="navOpen = false" :isHome="isHome" />
+    <ExternalLinks :isHome="isHome" />
     <!--<transition :name="routeslide">-->
       <router-view/>
     <!--</transition>-->
@@ -14,11 +15,13 @@
 
 <script>
   import Navbar from "@/components/Navbar.vue";
+  import ExternalLinks from "@/components/ExternalLinks.vue";
 
   export default {
     name: "App",
     components: {
       Navbar,
+      ExternalLinks
     },
     data() {
       return {

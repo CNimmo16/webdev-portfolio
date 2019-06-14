@@ -76,11 +76,16 @@
 			ProjectNav
 		},
 		mounted() {
+			var fsinfo = document.getElementById("fsinfo")
 			window.setTimeout(() => {
-				document.getElementById("fsinfo").classList.add("show");
+				if(typeof fsinfo !== "undefined") {
+					document.getElementById("fsinfo").classList.add("show");
+				}
 			}, 1000);
 			window.setTimeout(() => {
-				document.getElementById("fsinfo").classList.remove("show");
+				if(typeof fsinfo !== "undefined") {
+					document.getElementById("fsinfo").classList.remove("show");
+				}
 			}, 4500);
 				
 			// Initialise map baselayer

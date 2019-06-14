@@ -25,45 +25,50 @@ export default {
       cursorChar: "|",
       afterComplete: () => {
         var cursor = document.getElementsByClassName("ti-cursor")[0];
-        cursor.classList.add("block");
-        cursor.style.width = "2px";
-        cursor.style.height = "27px";
-        cursor.innerText = "";
-        cursor.style.backgroundColor = "#fff";
-        const startPoint = (window.innerWidth / 2) - (document.getElementById("typewriter").offsetLeft)
-        const endPoint = ((document.getElementById("typewriter").offsetLeft) + (window.innerWidth * 0.1)) * -1
-        window.setTimeout(() => {
-          tl.add({
-            targets: cursor,
-            translateX: startPoint,
-            translateY: "+=15px",
-            duration: 500
-          })
-          .add({
-            targets: cursor,
-            width: "120vw",
-            height: "60vh",
-            backgroundColor: "#75a0b5",
-            translateX: endPoint,
-            duration: 1000,
-            easing: "easeOutQuart"
-          })
-          .add({
-            targets: cursor,
-            opacity: 0,
-            duration: 1000,
-            delay: 500
-          })
-        }, 300)
-        window.setTimeout(() => {
-          if(window.scrollY < (window.innerHeight / 3)) {
-            this.$scrollTo(document.getElementById("start"), 1000)
-          }
-        }, 1300);
+        if(typeof cursor !== "undefined") {
+          cursor.classList.add("block");
+          cursor.style.width = "2px";
+          cursor.style.height = "27px";
+          cursor.innerText = "";
+          cursor.style.backgroundColor = "#fff";
+          const startPoint = (window.innerWidth / 2) - (document.getElementById("typewriter").offsetLeft)
+          const endPoint = ((document.getElementById("typewriter").offsetLeft) + (window.innerWidth * 0.1)) * -1
+          window.setTimeout(() => {
+            tl.add({
+              targets: cursor,
+              translateX: startPoint,
+              translateY: "+=15px",
+              duration: 500
+            })
+            .add({
+              targets: cursor,
+              width: "120vw",
+              height: "60vh",
+              backgroundColor: "#75a0b5",
+              translateX: endPoint,
+              duration: 1000,
+              easing: "easeOutQuart"
+            })
+            .add({
+              targets: cursor,
+              opacity: 0,
+              duration: 1000,
+              delay: 500
+            })
+          }, 300)
+          window.setTimeout(() => {
+            if(window.scrollY < (window.innerHeight / 3)) {
+              this.$scrollTo(document.getElementById("start"), 1000)
+            }
+          }, 1300);
+        }
       }
     })
     .exec(async() => {
-      document.getElementsByClassName("ti-cursor")[0].style.left = "-0.8ch";
+      var cursor = document.getElementsByClassName("ti-cursor")[0];
+      if(typeof cursor !== "undefined") {
+        cursor.style.left = "-0.8ch";
+      }
     })
     .type('<span style="color: #cc99cd;">var </span>').pause(50).type('c_nimmo <span style="color: #67cdcc">= </span>').pause(50).type('<span style="color: #cc99cd;">fullStack </span>').pause(100).type('<span style="color: #f8c555">WebDeveloper()</span> {').break().pause(200).type('<span style="color: #f08d49; padding-left: 4ch;">return </span>').pause(300).type('<span style="color: #a9eca6">' + qualities[0] + '</span><span style="color: #fff">;</span>').pause(700).delete(qualities[0].length+1).pause(200).type('<span style="color: #a9eca6">' + qualities[1] + '</span><span style="color: #fff">;</span>').pause(700).delete(qualities[1].length+1).pause(200).type('<span style="color: #a9eca6">' + qualities[2] + '</span><span style="color: #fff">;</span>')
     .pause(200)
@@ -75,8 +80,11 @@ export default {
     // })
     .pause(500)
     .exec(async() => {
-      document.getElementsByClassName("ti-cursor")[0].style.animation = "none";
-      document.getElementsByClassName("ti-cursor")[0].style.WebkitAnimation = "none";
+      var cursor = document.getElementsByClassName("ti-cursor")[0];
+      if(typeof cursor !== "undefined") {
+        cursor.style.animation = "none";
+        cursor.style.WebkitAnimation = "none";
+      }
       return "go"
     })
     // .pause(200)
