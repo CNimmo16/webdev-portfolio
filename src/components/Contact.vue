@@ -1,7 +1,10 @@
 <template>
     <section id="contact" class="section section--light">
         <div class="section__content section__content--compact">
-            <h2 class="title title--big">Let's make something beautiful together... <br> Get in touch.</h2>
+            <div class="reversed-flow">
+                <h1 class="title title--big">Get in touch.</h1>
+                <h2 class="title title--big">Let's make something beautiful together... </h2>
+            </div>
             <form action="https://formspree.io/cameronnimmo@hotmail.co.uk" method="POST">
                 <div class="name">
                     <label for="name">Name *</label>
@@ -74,11 +77,16 @@
         .section-container {
             padding-top: 0;
         }
-        .title {
-            margin: 30px 0 30px 0;
-            color: #385b6d;
-            br {
-                line-height: 1.65;
+        .reversed-flow {
+            display: flex;
+            flex-direction: column-reverse;
+            margin: 0px 0 35px 0;
+            .title {
+                color: #385b6d;
+                margin-bottom: 10px;
+                br {
+                    line-height: 1.65;
+                }
             }
         }
         form {

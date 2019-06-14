@@ -1,6 +1,6 @@
 <template>
     <router-link v-if="project.href" :to="project.href">
-        <div class="showcase__item showcase__item--experiment">
+        <article class="showcase__item showcase__item--experiment">
             <img class="showcase__item__img" :src="project.images[0]">
             <div class="content">
                 <div class="top-items">
@@ -18,7 +18,7 @@
                 </div>
                 <h3>{{ project.titleMain }}</h3>
             </div>
-        </div>
+        </article>
     </router-link>
 </template>
 

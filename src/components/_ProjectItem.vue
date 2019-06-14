@@ -1,6 +1,6 @@
 <template>
     <a v-if="project.href" :href="project.href" target="_blank">
-        <div class="showcase__item showcase__item--project">
+        <article class="showcase__item showcase__item--project">
             <div class="workspace"></div>
             <img class="showcase__item__img showcase__item__img--trio" v-for="(image, index) in project.images" :key="index" :src="image">
             <div class="content">
@@ -20,7 +20,7 @@
                 </div>
                 <h3>{{ project.titleMain }}</h3>
             </div>
-        </div>
+        </article>
     </a>
 </template>
 
