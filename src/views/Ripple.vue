@@ -3,7 +3,7 @@
 		<ProjectNav />
 		<div class="section__content">
 			<h1 class="title title--big">Ripple Immersive Music Player</h1>
-			<p>Ripple is a concept interface for an immersive music streaming service. I wanted to create a music playback interface that was impressive to look at and fun to explore, a kind of homage to the title browsing page on Netflix's desktop site, but for music. </p>
+			<p>Ripple is a concept interface for an immersive music streaming service. I wanted to create a music playback interface that was impressive to look at and fun to explore, a kind of homage to the title browsing page on Netflix's desktop site, but for music. Ripple is designed as a desktop web application, but already has good size scaling on mobile and would just need to respond to swipe gestures with touchstart and touchend events to be fully mobile friendly.</p>
 			<a class="preview" href="https://cnimmo16.github.io/Ripple/" target="_blank">
 				<img src="@/assets/projects/lab/ripple/preview.png">
 				<div class="overlay"></div>
@@ -13,7 +13,6 @@
 			<ol>
 				<li><strong>A 3D world - </strong>I find 3D transformations one of the most complicated features of CSS to understand. But when used correctly, they can transform a dull, flat website into an immersive web application. I wanted to try a project that would improve my knowledge of working in the 3D space, and building Ripple definitely helped out with that.</li>
 				<li><strong>Celebration of cover art - </strong>The days of huge square foot vinyl record covers may be over, but most artists still put a lot of thought into their album and single covers. While mobile apps like Spotify and Apple Music still display the cover prominently on the currently playing song, their desktop equivalents don't. I wanted to put the album art front stage, both as a celebration of its design and also because image and video is a key way of increasing immersion.</li>
-				<li><strong>Life with a chromebook - </strong>When it comes to Web Developers using a low end Chromebook as their daily driver, I'm definitely in the minority. Most of the time it works great for me, but there are some situations where it can be frustrating. I mentioned the Netflix website. Using it definitely looks nice, but it often has laggy, unresponsive performance on my Chromebook. I wanted to show that a highly interactive, 3D interface could be made to run smoothly and reliably even on a low end device. And with hardware accelerated animation and correctly sized album art, Ripple does. No excuses, Netflix!</li>
 			</ol>
 			
 			<h2>Development challenges</h2>

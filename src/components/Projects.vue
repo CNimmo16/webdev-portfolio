@@ -52,13 +52,24 @@
             projectData() {
                 return [
                     {
+                        ref: "lightning",
+                        titleMain: "Lightning Commerce",
+                        titleExtra: "Lightning Commerce",
+                        details: "Lightning commerce is a lightning fast E-Commerce platform built from scratch on NodeJS, using the KOA Framework.",
+                        images: [require("@/assets/projects/lightning/main.jpg"), require("@/assets/projects/lightning/setup.jpg"), require("@/assets/projects/lightning/glass.jpg")],
+                        tags: [this.icons.node, this.icons.vue, this.icons.js],
+                        href: "https://github.com/CNimmo16/lightning-commerce",
+                        linkText: "Check it out on Github"
+                    },
+                    {
                         ref: "indonesia",
                         titleMain: "Trip the Distance - Indonesia",
                         titleExtra: "Trip the Distance - Indonesia",
                         details: "I designed, developed and deployed the Indonesia site for the tripthedistance.com travel blog, running on a Express based custom CMS built from scratch.",
                         images: [require("@/assets/projects/indonesia/monitor.png"), require("@/assets/projects/indonesia/ipad2.png"), require("@/assets/projects/indonesia/iphone2.png")],
                         tags: [this.icons.html5, this.icons.js, this.icons.node, this.icons.ck],
-                        href: "https://indonesia.tripthedistance.com"
+                        href: "https://indonesia.tripthedistance.com",
+                        linkText: "Click to see the live site"
                     },
                     {
                         ref: "japan",
@@ -67,7 +78,8 @@
                         details: "I designed, developed and deployed the Japan site for the tripthedistance.com travel blog.",
                         images: [require("@/assets/projects/japan/monitor.png"), require("@/assets/projects/japan/ipad.png"), require("@/assets/projects/japan/iphone.png")],
                         tags: [this.icons.vue, this.icons.nuxt],
-                        href: "https://japan.tripthedistance.com"
+                        href: "https://japan.tripthedistance.com",
+                        linkText: "Click to see the live site"
                     },
                 ]
             }

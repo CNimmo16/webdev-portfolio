@@ -15,7 +15,7 @@
                     <p>
                         {{ project.details }}
                         <!--<br>-->
-                        <a v-if="project.href" :href="project.href" target="_blank">Click to see the live site</a>
+                        <a v-if="project.href" :href="project.href" target="_blank">{{ project.linkText }}</a>
                     </p>
                 </div>
                 <h3>{{ project.titleMain }}</h3>
