@@ -1,7 +1,7 @@
 <template>
     <div id="navbar" :class="{ open: open }">
         <div id="nav-sensor" @mouseenter="moused = true"  :class="{ fullscreen: fullscreenSensor }"></div>
-        <div id="nav" :class="{ show: showNav }" @mouseleave="moused = false">
+        <nav id="nav" :class="{ show: showNav }" @mouseleave="moused = false">
             
             <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 1 }" v-scroll-to="'#start'" @click.stop="$emit('close-nav')">Home</a>
             <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#start">Home</router-link>
@@ -15,7 +15,18 @@
             <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 4 }" v-scroll-to="'#contact'" @click.stop="$emit('close-nav')">Work with me</a>
             <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#contact">Work with me</router-link>
             <!--<router-link :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/blog">Blog</router-link>-->
-        </div>
+            
+            <div class="ext">
+              <a class="item" href="https://github.com/CNimmo16/" target="_blank">
+                  <img src="@/assets/ext-link-icons/github.png">
+                  <span>Github</span>
+              </a>
+              <a class="item" href="https://www.linkedin.com/in/cameron-nimmo" target="_blank">
+                  <img src="@/assets/ext-link-icons/linkedin.png">
+                  <span>LinkedIn</span>
+              </a>
+            </div>
+        </nav>
     </div>
 </template>
 
@@ -122,7 +133,7 @@ export default {
         align-items: flex-start;
         width: fit-content;
         position: relative;
-        a {
+        > a {
             color: $palette-text-light !important;              
             text-shadow: 3px 2px 0px $palette-text-blue;
             border-left: 3px solid $palette-text-blue !important;
@@ -152,7 +163,28 @@ export default {
   &.show {
     @extend %nav-height;
   }
-  a {
+  .ext {
+    display: flex;
+    margin-top: 30px;
+    @include mq("phone") {
+      display: none;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      margin: 0 20px;
+      img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+      }
+      span {
+        color: #fff;
+        font-size: 1.3em;
+      }
+    }
+  }
+  > a {
     cursor: pointer;
     padding: 0 15px;
     font-weight: bold;

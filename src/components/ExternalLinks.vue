@@ -46,6 +46,10 @@
         right: 0px;
         padding: 50px 0 50px 50px;
         /*background-color: red;*/
+        display: none;
+        @include mq("phone") {
+            display: block;
+        }
         &:hover {
             nav.show {
                 transform: scale(1);
