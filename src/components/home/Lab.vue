@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import LabItem from "@/components/_LabItem.vue"
+    import LabItem from "@/components/home/_LabItem.vue"
 
     export default {
         name: "lab",

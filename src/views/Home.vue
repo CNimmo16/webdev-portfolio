@@ -3,20 +3,17 @@
     <Intro />
     <Launchpad />
     <Projects />
-    <!--<Void />-->
     <Lab />
     <Contact />
-    <!--<div class="count">{{ currentPage }}</div>-->
   </div>
 </template>
 
 <script>
-import Intro from "@/components/Intro.vue"
-import Launchpad from "@/components/Launchpad.vue"
-import Projects from "@/components/Projects.vue"
-// import Void from "@/components/Void.vue"
-import Lab from "@/components/Lab.vue"
-import Contact from "@/components/Contact.vue"
+import Intro from "@/components/home/Intro.vue"
+import Launchpad from "@/components/home/Launchpad.vue"
+import Projects from "@/components/home/Projects.vue"
+import Lab from "@/components/home/Lab.vue"
+import Contact from "@/components/home/Contact.vue"
 
 import debounce from 'lodash/debounce';
 
@@ -38,7 +35,7 @@ export default {
   mounted() {
     const hash = window.location.hash
     if(hash.length > 0 && this.pages.indexOf(hash.slice(1)) > -1) {
-      const cancelScroll = this.$scrollTo(hash)
+      this.$scrollTo(hash)
     } else {
       this.handleScroll()
     }

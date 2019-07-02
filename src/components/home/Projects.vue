@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import ProjectItem from "@/components/_ProjectItem.vue"
+    import ProjectItem from "@/components/home/_ProjectItem.vue"
 
     export default {
         name: "projects",

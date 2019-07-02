@@ -82,13 +82,10 @@
         mounted() {
             this.isPhone = window.innerWidth < 615;
             window.addEventListener("resize", () => {
-                const oldVal = this.isPhone;
                 this.isPhone = window.innerWidth < 615
-                // if(this.isPhone !== oldVal) {
-                    for(const letter of document.getElementsByClassName("title-letter")) {
-                        letter.style.transform = "scale(1) translateY(0)" 
-                    }
-                // }
+                for(const letter of document.getElementsByClassName("title-letter")) {
+                    letter.style.transform = "scale(1) translateY(0)" 
+                }
             })
         },
         methods: {
@@ -115,31 +112,41 @@
                 }, 700)
                 .add({
                     targets: "#start p",
+                    translateY: [-50, 0],
+                    duration: 1300,
+                    easing: "easeOutQuad"
+                }, "-=900")
+                .add({
+                    targets: "#start p",
+                    opacity: 1,
+                    duration: 1300,
+                    easing: "linear"
+                }, "-=800")
+                .add({
+                    targets: "#start h3",
                     translateY: [-20, 0],
                     duration: 1000,
                     easing: "easeOutQuad"
-                }, "-=600")
+                }, "-=700")
                 .add({
-                    targets: "#start p",
+                    targets: "#start h3",
                     opacity: 1,
                     duration: 1000,
                     easing: "linear"
                 }, "-=1000")
                 .add({
-                    targets: "#start h3",
-                    opacity: 1,
-                    translateX: ["-50vw", 0],
-                    skew: ["15deg", "0deg"],
-                    duration: 800,
-                    easing: "easeOutElastic()"
-                }, "+=700")
+                    targets: "#start .skills li",
+                    translateY: [-20, 0],
+                    duration: 1000,
+                    easing: "easeOutQuad",
+                    delay: this.$anime.stagger(200),
+                }, "-=1000")
                 .add({
                     targets: "#start .skills li",
                     opacity: 1,
-                    scale: [0, 1],
-                    elasticity: 200,
-                    duration: 1200,
-                    delay: this.$anime.stagger(1300),
+                    duration: 500,
+                    easing: "linear",
+                    delay: this.$anime.stagger(200),
                     complete: () => {
                         let entrance = this.$anime.timeline({
                             loop: true,
@@ -171,7 +178,7 @@
                             delay: this.$anime.stagger(130),
                         })
                     }
-                })
+                }, "-=1300")
             },
             getOffset( el ) {
                 var _x = 0;
