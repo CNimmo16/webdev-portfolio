@@ -71,7 +71,7 @@
                     {
                         ref: "interactive_indonesia",
                         titleMain: "Interactive Indonesia",
-                        titleExtra: "Interactive Indonesia - explore a 19th century map of Indonesia",
+                        titleExtra: "Interactive Indonesia",
                         details: "A Javascript based fully explorable map of Indonesia created for the tripthedistance.com travel blog.",
                         images: [require("@/assets/projects/lab/interactive-indonesia/main.png"), require("@/assets/projects/lab/ripple/mouse-left.png"), require("@/assets/projects/lab/ripple/mouse-right.png")],
                         tags: [this.icons.js, this.icons.leaflet],

@@ -35,7 +35,7 @@
                     <span>{{ errors.first('message') }}</span>
                 </div>
                 <div class="submit-button">
-                    <button :disabled="!valid" :class="{ disabled: !valid, clicked: clicked }" @mousedown="click">Send message</button>
+                    <button :disabled="!valid" :class="{ disabled: !valid }">Send message</button>
                 </div>
             </form>
         </div>
@@ -46,24 +46,11 @@
 
     export default {
         name: "Contact",
-        data() {
-            return {
-                clicked: false
-            }
-        },
         computed: {
             valid() {
                 return this.errors.all().length === 0
             }
         },
-        methods: {
-            click() {
-                this.clicked = true;
-                window.addEventListener("mouseup", () => {
-                    this.clicked = false;
-                })
-            }
-        }
     }
 </script>
 

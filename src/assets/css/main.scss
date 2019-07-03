@@ -111,7 +111,9 @@ $trans-time: 0.65s;
     overflow: hidden;
     transition: flex-grow $trans-time;
     box-sizing: border-box;
+    cursor: default;
     .content {
+        pointer-events: none;
         position: absolute;
         top: -2px;
         left: -2px;
@@ -127,19 +129,26 @@ $trans-time: 0.65s;
             transform: translateY(-200px);
             transition: transform $trans-time;
             padding-bottom: 10px;
+            background-color: #fff;
             h2 {
                 margin: 0;
                 padding: $padding;
                 padding-bottom: 0;
                 line-height: 1.5;
                 text-align: left;
+                pointer-events: all;
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
             }
             ul {
-                margin: 10px $padding;
+                margin: 5px $padding;
                 display: flex;
                 flex-wrap: wrap;
                 li {
                     padding-right: 23px;
+                    padding-bottom: 0;
                     margin: 5px 0;
                     display: flex;
                     align-items: center;
@@ -154,15 +163,13 @@ $trans-time: 0.65s;
                 font-size: 0.9em;
                 padding: 0 $padding;
                 margin: 0;
+                pointer-events: all;
             }
             br {
                 line-height: 1.9;
             }
             a {
-                font-size: 1.05em;
-                color: $palette-text-blue;
                 font-weight: 600;
-                text-decoration: underline;
             }
         }
         h3 {
@@ -182,6 +189,7 @@ $trans-time: 0.65s;
         }
     }
     &--experiment {
+        cursor: pointer;
         .content { 
             color: $palette-text-light; 
             .top-items {
@@ -200,28 +208,18 @@ $trans-time: 0.65s;
             }
         }
     }
-    .workspace {
-        background-color: #fff;
-        opacity: 0;
-        transition: opacity $trans-time;
-        @extend %overlay;
-    }
     &:hover {
-        .showcase__item__img { 
-            transform: translateY(60px); 
-            &--trio { 
-                opacity: 1;
-                transform: scale(0.55); 
-                height: auto !important;
-                &:nth-of-type(1) {
-                    width: 600px;
-                }
-            }
-        }
         h3 { transform: translateY(200px); }
-        h3 { transform: translateY(200px); background-color: rgb(243, 247, 249); }
         .top-items { transform: translateY(0); }
-        .workspace { opacity: 1; }
+        .showcase__item__img { 
+            transform: translateY(125px) scale(0.85);
+            div {
+                opacity: 1;
+            } 
+        }
+        .showcase__item__img--trio { 
+            transform: translateY(135px) scale(0.85);
+        }
     }
     &--experiment:hover {
         h3 { background-color: $palette-background-dark; }
@@ -230,17 +228,8 @@ $trans-time: 0.65s;
         height: auto;
         .showcase__item__img { 
             position: static;
-            transform: none !important; 
-            &--trio { 
-                opacity: 1 !important;
-                // transform: translateY(-60px) !important; 
-                height: auto !important;
-                &:nth-of-type(1) {
-                    width: 88% !important;
-                }
-            }
+            transform: none !important;
         }
-        .workspace { display: none; }
         h3 { display: none; }
         .content { 
             position: static;
@@ -252,56 +241,49 @@ $trans-time: 0.65s;
 }
 
 .showcase__item__img {
-    align-self: right;
     object-fit: cover;
-    object-position: center;
     transition: width $trans-time, transform $trans-time, opacity $trans-time;
     position: absolute;
-    top: 0;
-    left: 0;
-    filter: drop-shadow(-1px 2px 0px #888);
-    width: 100%;
-    @include mq("phone") {
+    left: 5px;
+    width: 98%;
+    padding-bottom: 10px;
+    height: 100%;
+    transform-origin: left;
+    img {
+        width: 100%;
         height: 100%;
     }
-    &--trio {
-        width: auto;
-        height: auto;
-        object-fit: contain;
-        object-position: right;
-        top: 50%;
-        &:nth-of-type(1) {
-            width: 75%;
-            transform-origin: -15% -10%;
-            left: 6%;
-            @include mq("phone") {
-                left: 12.5%;
-                transform-origin: 55% -30%;
-            }
-            transform: translateY(-50%);
-            top: 51.6%;
-        }
-        &:nth-of-type(2) {
-            display: none;
-            @include mq("phone") {
-                transform-origin: 60% -15%;
-                display: block;
-            }
-            transform: translateX(600px) translateY(400px);
-            opacity: 0;
-            width: 332px;
-        }
-        &:nth-of-type(3) {
-            display: none;
-            @include mq("phone") {
-                transform-origin: 370% 33%;
-                display: block;
-            }
-            transform: translateX(600px) translateY(-400px);
-            opacity: 0;
-            width: 147px;
+    div {
+        @extend %overlay;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0,0,0,0.2);
+        opacity: 0;
+        transition: opacity 1.3s;
+        .button {
+            margin: 0 10px;
+            font-size: 1.3em;
+            padding: 10px 20px;
+            pointer-events: all;
         }
     }
+    &--trio {
+        bottom: 145px;
+        height: auto;
+        @include mq("phone") {
+            width: 90%;
+            left: 5px;
+            box-shadow: -1px 2px 7px #bbb;
+        }
+    }
+    @include mq("phone") {
+        padding-bottom: 0px;
+    }
+}
+
+.showcase__item__image-overlay {
+    @extend %overlay;
 }
 
 .title {
@@ -362,7 +344,7 @@ a {
     text-decoration: none;
 }
 
-button {
+button, .button {
     outline: none;
     border: none;
     background-color: $palette-background-blue;
@@ -376,7 +358,10 @@ button {
     border-bottom: $w solid $palette-text-dark;
     border-right: $w solid $palette-text-dark;
     transition: all 0.05s;
-    &.clicked, &.disabled {
+    &:hover {
+        background-color: #5e8ba0;
+    }
+    &:active {
         transform: translateX($w) translateY($w);
         border-bottom: $w solid transparent;
         border-right: none;

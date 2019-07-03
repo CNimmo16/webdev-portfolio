@@ -56,30 +56,44 @@
                         titleMain: "Lightning Commerce",
                         titleExtra: "Lightning Commerce",
                         details: "Lightning commerce is a lightning fast E-Commerce platform built from scratch on NodeJS, using the KOA Framework.",
-                        images: [require("@/assets/projects/lightning/main.jpg"), require("@/assets/projects/lightning/setup.jpg"), require("@/assets/projects/lightning/glass.jpg")],
+                        image: require("@/assets/work/projects/lightning.jpg"),
                         tags: [this.icons.node, this.icons.vue, this.icons.js],
-                        href: "https://github.com/CNimmo16/lightning-commerce",
-                        linkText: "Check it out on Github"
+                        links: [{
+                            text: "Github",
+                            url: "https://github.com/CNimmo16/lightning-commerce"
+                        },
+                        {
+                            text: "Demo site",
+                            url: "https://lightning-commerce.herokuapp.com/",
+                        }]
                     },
                     {
                         ref: "indonesia",
                         titleMain: "Trip the Distance - Indonesia",
                         titleExtra: "Trip the Distance - Indonesia",
-                        details: "I designed, developed and deployed the Indonesia site for the tripthedistance.com travel blog, running on a Express based custom CMS built from scratch.",
-                        images: [require("@/assets/projects/indonesia/monitor.png"), require("@/assets/projects/indonesia/ipad2.png"), require("@/assets/projects/indonesia/iphone2.png")],
+                        details: "I designed, developed and deployed the Indonesia site for the tripthedistance.com bilingual travel blog, running on a Express based custom CMS built from scratch.",
+                        image: require("@/assets/work/projects/indonesia.jpg"),
                         tags: [this.icons.html5, this.icons.js, this.icons.node, this.icons.ck],
-                        href: "https://indonesia.tripthedistance.com",
-                        linkText: "Click to see the live site"
+                        links: [{
+                            text: "Live site",
+                            url: "https://indonesia.tripthedistance.com",
+                        }]
                     },
                     {
                         ref: "japan",
                         titleMain: "Trip the Distance - Japan",
                         titleExtra: "Trip the Distance - Japan",
                         details: "I designed, developed and deployed the Japan site for the tripthedistance.com travel blog.",
-                        images: [require("@/assets/projects/japan/monitor.png"), require("@/assets/projects/japan/ipad.png"), require("@/assets/projects/japan/iphone.png")],
+                        image: require("@/assets/work/projects/japan.jpg"),
                         tags: [this.icons.vue, this.icons.nuxt],
-                        href: "https://japan.tripthedistance.com",
-                        linkText: "Click to see the live site"
+                        links: [{
+                            text: "Live site",
+                            url: "https://japan.tripthedistance.com",
+                        },
+                        {
+                            text: "Github",
+                            url: "https://github.com/CNimmo16/tripthedistance-japan"
+                        }]
                     },
                 ]
             }
