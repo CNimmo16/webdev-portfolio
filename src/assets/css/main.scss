@@ -129,6 +129,7 @@ $trans-time: 0.65s;
             transform: translateY(-200px);
             transition: transform $trans-time;
             padding-bottom: 10px;
+            background-color: $palette-background-light;
             h2 {
                 margin: 0;
                 padding: $padding;
