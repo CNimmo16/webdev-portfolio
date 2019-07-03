@@ -138,7 +138,7 @@
 				iconAnchor: [13, 38] 
 			})
 			
-			var islands = require("@/assets/projects/indomap/mapData.json");
+			var islands = require("@/assets/indomap/mapData.json");
 			
 			// Draw polygons for each island and save to island objects
 			islands.forEach(function(island){

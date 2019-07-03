@@ -64,7 +64,7 @@
                         titleMain: "Ripple Immersive Music Player",
                         titleExtra: "Ripple - a music player for the future",
                         details: "Ripple is a concept interface for an immersive music streaming service.",
-                        images: [require("@/assets/projects/lab/ripple/mouse-centre.png"), require("@/assets/projects/lab/ripple/mouse-left.png"), require("@/assets/projects/lab/ripple/mouse-right.png")],
+                        image: require("@/assets/work/lab/ripple.png"),
                         tags: [this.icons.vue, this.icons.js, this.icons.gsap],
                         href: "/ripple-music"
                     },
@@ -73,7 +73,7 @@
                         titleMain: "Interactive Indonesia",
                         titleExtra: "Interactive Indonesia",
                         details: "A Javascript based fully explorable map of Indonesia created for the tripthedistance.com travel blog.",
-                        images: [require("@/assets/projects/lab/interactive-indonesia/main.png"), require("@/assets/projects/lab/ripple/mouse-left.png"), require("@/assets/projects/lab/ripple/mouse-right.png")],
+                        image: require("@/assets/work/lab/indomap.png"),
                         tags: [this.icons.js, this.icons.leaflet],
                         href: "/interactive-indonesia"
                     },

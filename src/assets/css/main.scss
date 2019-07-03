@@ -161,7 +161,7 @@ $trans-time: 0.65s;
             }
             p {
                 font-size: 0.9em;
-                padding: 0 $padding;
+                padding: 0 $padding 7px $padding;
                 margin: 0;
                 pointer-events: all;
             }
@@ -170,6 +170,15 @@ $trans-time: 0.65s;
             }
             a {
                 font-weight: 600;
+            }
+            .mobile-link {
+                pointer-events: all;
+                color: $palette-text-blue;
+                text-decoration: underline;
+                padding: 0 2%;
+                @include mq("phone") {
+                    display: none;
+                }
             }
         }
         h3 {
@@ -255,7 +264,10 @@ $trans-time: 0.65s;
     }
     div {
         @extend %overlay;
-        display: flex;
+        display: none;
+        @include mq("phone") {
+            display: flex;
+        }
         align-items: center;
         justify-content: center;
         background-color: rgba(0,0,0,0.2);

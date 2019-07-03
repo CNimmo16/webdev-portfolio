@@ -5,7 +5,7 @@
 			<h1 class="title title--big">Ripple Immersive Music Player</h1>
 			<p>Ripple is a concept interface for an immersive music streaming service. I wanted to create a music playback interface that was impressive to look at and fun to explore, a kind of homage to the title browsing page on Netflix's desktop site, but for music. Ripple is designed as a desktop web application, but already has good size scaling on mobile and would just need to respond to swipe gestures with touchstart and touchend events to be fully mobile friendly.</p>
 			<a class="preview" href="https://cnimmo16.github.io/Ripple/" target="_blank">
-				<img src="@/assets/projects/lab/ripple/preview.png">
+				<img src="@/assets/work/lab/ripple.png">
 				<div class="overlay"></div>
 				<div class="text">Click to launch Ripple</div>
 			</a>

@@ -115,7 +115,7 @@
                     translateY: [-50, 0],
                     duration: 1300,
                     easing: "easeOutQuad"
-                }, "-=900")
+                }, "-=1300")
                 .add({
                     targets: "#start p",
                     opacity: 1,
@@ -139,14 +139,14 @@
                     translateY: [-20, 0],
                     duration: 1000,
                     easing: "easeOutQuad",
-                    delay: this.$anime.stagger(200),
+                    delay: this.$anime.stagger(120),
                 }, "-=1000")
                 .add({
                     targets: "#start .skills li",
                     opacity: 1,
-                    duration: 500,
+                    duration: 300,
                     easing: "linear",
-                    delay: this.$anime.stagger(200),
+                    delay: this.$anime.stagger(120),
                     complete: () => {
                         let entrance = this.$anime.timeline({
                             loop: true,

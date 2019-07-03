@@ -17,9 +17,8 @@
                 </ul>
                 <p>
                     {{ project.details }}
-                    <!--<br>-->
-                    <!--<a v-if="project.href" :href="project.href" target="_blank">{{ project.linkText }}</a>-->
                 </p>
+                <a class="mobile-link" v-for="(link, index) in project.links" :href="link.url" :key="index" target="_blank">{{ link.text }}</a>
             </div>
             <h3>{{ project.titleMain }}</h3>
         </div>

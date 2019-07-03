@@ -1,7 +1,7 @@
 <template>
     <router-link v-if="project.href" :to="project.href">
         <article class="showcase__item showcase__item--experiment">
-            <img class="showcase__item__img" :src="project.images[0]">
+            <img class="showcase__item__img" :src="project.image">
             <div class="content">
                 <div class="top-items">
                     <h2>{{ project.titleExtra }}</h2>

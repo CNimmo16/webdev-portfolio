@@ -44,6 +44,10 @@
                     ck: {
                         name: "CKEditor",
                         image: require("@/assets/skill-icons/ckeditor.png")
+                    },
+                    prismic: {
+                        name: "Prismic.io",
+                        image: require("@/assets/skill-icons/prismic.png")
                     }
                 }
             }
@@ -71,7 +75,7 @@
                         ref: "indonesia",
                         titleMain: "Trip the Distance - Indonesia",
                         titleExtra: "Trip the Distance - Indonesia",
-                        details: "I designed, developed and deployed the Indonesia site for the tripthedistance.com bilingual travel blog, running on a Express based custom CMS built from scratch.",
+                        details: "I designed, developed and deployed the Indonesia site for the tripthedistance.com bilingual travel blog, running on an Express based custom CMS built from scratch.",
                         image: require("@/assets/work/projects/indonesia.jpg"),
                         tags: [this.icons.html5, this.icons.js, this.icons.node, this.icons.ck],
                         links: [{
@@ -83,9 +87,9 @@
                         ref: "japan",
                         titleMain: "Trip the Distance - Japan",
                         titleExtra: "Trip the Distance - Japan",
-                        details: "I designed, developed and deployed the Japan site for the tripthedistance.com travel blog.",
-                        image: require("@/assets/work/projects/japan.jpg"),
-                        tags: [this.icons.vue, this.icons.nuxt],
+                        details: "I designed, developed and deployed the Japan site for the tripthedistance.com travel blog. Content managed with Prismic.io headless CMS.",
+                        image: require("@/assets/work/projects/japan2.jpg"),
+                        tags: [this.icons.vue, this.icons.nuxt, this.icons.prismic],
                         links: [{
                             text: "Live site",
                             url: "https://japan.tripthedistance.com",
