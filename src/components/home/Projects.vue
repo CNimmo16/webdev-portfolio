@@ -68,7 +68,7 @@
                         },
                         {
                             text: "Demo site",
-                            url: "https://lightning-commerce.herokuapp.com/",
+                            url: "https://lightning-commerce-demo.herokuapp.com/",
                         }]
                     },
                     {
