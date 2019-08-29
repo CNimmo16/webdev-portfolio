@@ -73,26 +73,30 @@
                     },
                     {
                         ref: "indonesia",
-                        titleMain: "Trip the Distance - Indonesia",
-                        titleExtra: "Trip the Distance - Indonesia",
-                        details: "I designed, developed and deployed the Indonesia site for the tripthedistance.com bilingual travel blog, running on an Express based custom CMS built from scratch.",
+                        titleMain: "Trip the Distance",
+                        titleExtra: "Trip the Distance",
+                        details: "I designed, developed and deployed this bilingual travel blog, running on an Express based custom CMS built from scratch.",
                         image: require("@/assets/work/projects/indonesia.jpg"),
                         tags: [this.icons.html5, this.icons.js, this.icons.node, this.icons.ck],
                         links: [{
                             text: "Live site",
-                            url: "https://indonesia.tripthedistance.com",
+                            url: "https://tripthedistance.com",
+                        },
+                        {
+                            text: "Github",
+                            url: "https://github.com/CNimmo16/tripthedistance",
                         }]
                     },
                     {
                         ref: "japan",
                         titleMain: "Trip the Distance - Japan",
                         titleExtra: "Trip the Distance - Japan",
-                        details: "I designed, developed and deployed the Japan site for the tripthedistance.com travel blog. Content managed with Prismic.io headless CMS.",
+                        details: "Vue powered custom site for the tripthedistance travel blog. Content managed with Prismic.io headless CMS.",
                         image: require("@/assets/work/projects/japan2.jpg"),
                         tags: [this.icons.vue, this.icons.nuxt, this.icons.prismic],
                         links: [{
-                            text: "Live site",
-                            url: "https://japan.tripthedistance.com",
+                            text: "Demo site",
+                            url: "https://tripthedistance-japan.herokuapp.com/",
                         },
                         {
                             text: "Github",
