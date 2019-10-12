@@ -73,13 +73,13 @@ body {
 }
 
 @keyframes border-wave-y {
-    0% { border-bottom-width: 6px; }
-    14% { border-bottom-width: 13px; }
-    33% { border-bottom-width: 8px; }
-    46% { border-bottom-width: 16px; }
-    66% { border-bottom-width: 7px; }
-    79% { border-bottom-width: 15px; }
-    100% { border-bottom-width: 6px; }
+    0% { border-bottom-width: 2px; }
+    14% { border-bottom-width: 11px; }
+    33% { border-bottom-width: 4px; }
+    46% { border-bottom-width: 14px; }
+    66% { border-bottom-width: 3px; }
+    79% { border-bottom-width: 12px; }
+    100% { border-bottom-width: 2px; }
 }
 
 // @keyframes border-wave-x {
@@ -117,17 +117,17 @@ body {
             left: -20px;
             right: 0;
             bottom: 0;
-            animation: border-wave-x 4s infinite cubic-bezier(.45,.15,.57,.88), border-wave-y 6s infinite linear;
+            animation: border-wave-x 0.7s infinite linear, border-wave-y 6s infinite linear;
         }
         &::before{
             height: 10px;
             background-size: 20px 40px;
-            background-image: radial-gradient(circle at 4px -10px, transparent 20px, var(--wave-color) 21px);
+            background-image: radial-gradient(circle at 10px -5px, transparent 12px, var(--wave-color) 13px);
         }
         &::after{
             height: 15px;
             background-size: 40px 40px;
-            background-image:  radial-gradient(circle at 10px 26px, var(--wave-color) 20px, transparent 21px);
+            background-image: radial-gradient(circle at 10px 15px, var(--wave-color) 12px, transparent 13px);
         }
     }
 }
