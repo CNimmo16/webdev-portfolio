@@ -15,54 +15,14 @@ export default {
       easing: 'easeOutExpo',
       // duration: 750,
     });
-    var qualities = ['"versatile"', '"dependable"', '"an eye for design"']
-    new this.$typeit('#typewriter', {
+    var qualities = ['"cutting edge web apps"', '"quality code"', '"slick design"']
+    const typewriter = new this.$typeit('#typewriter', {
       speed: 80,
-      deleteSpeed: 80,
+      deleteSpeed: 20,
       waitUntilVisible: true,
       lifeLike: true,
       html: true,
-      cursorChar: "|",
-      afterComplete: () => {
-        var cursor = document.getElementsByClassName("ti-cursor")[0];
-        if(typeof cursor !== "undefined") {
-          cursor.classList.add("block");
-          cursor.style.width = "2px";
-          cursor.style.height = "27px";
-          cursor.innerText = "";
-          cursor.style.backgroundColor = "#fff";
-          const startPoint = (window.innerWidth / 2) - (document.getElementById("typewriter").offsetLeft)
-          const endPoint = ((document.getElementById("typewriter").offsetLeft) + (window.innerWidth * 0.1)) * -1
-          window.setTimeout(() => {
-            tl.add({
-              targets: cursor,
-              translateX: startPoint,
-              translateY: "+=15px",
-              duration: 500
-            })
-            .add({
-              targets: cursor,
-              width: "120vw",
-              height: "60vh",
-              backgroundColor: "#75a0b5",
-              translateX: endPoint,
-              duration: 1000,
-              easing: "easeOutQuart"
-            })
-            .add({
-              targets: cursor,
-              opacity: 0,
-              duration: 1000,
-              delay: 500
-            })
-          }, 300)
-          window.setTimeout(() => {
-            if(window.scrollY < (window.innerHeight / 3)) {
-              this.$scrollTo(document.getElementById("start"), 1000)
-            }
-          }, 1300);
-        }
-      }
+      cursorChar: "|"
     })
     .exec(async() => {
       var cursor = document.getElementsByClassName("ti-cursor")[0];
@@ -70,24 +30,85 @@ export default {
         cursor.style.left = "-0.8ch";
       }
     })
-    .type('<span style="color: #cc99cd;">var </span>').pause(50).type('c_nimmo <span style="color: #67cdcc">= </span>').pause(50).type('<span style="color: #cc99cd;">fullStack </span>').pause(100).type('<span style="color: #f8c555">WebDeveloper()</span> {').break().pause(200).type('<span style="color: #f08d49; padding-left: 4ch;">return </span>').pause(300).type('<span style="color: #a9eca6">' + qualities[0] + '</span><span style="color: #fff">;</span>').pause(700).delete(qualities[0].length+1).pause(200).type('<span style="color: #a9eca6">' + qualities[1] + '</span><span style="color: #fff">;</span>').pause(700).delete(qualities[1].length+1).pause(200).type('<span style="color: #a9eca6">' + qualities[2] + '</span><span style="color: #fff">;</span>')
+    // .type('<span style="color: #cc99cd;">var </span>').pause(50)
+    .type('cameron_nimmo <span style="color: #67cdcc">= </span>').pause(50)
+    .type('<span style="color: #cc99cd;">fullStack </span>').pause(100)
+    .type('<span style="color: #f8c555">WebDeveloper()</span> {')
+    .break().pause(200)
+    .type('<span style="color: #f08d49; padding-left: 4ch;">return </span>').pause(300)
+    .type('<span style="color: #a9eca6;">' + qualities[0] + '</span><span style="color: #fff">;</span>').pause(700)
+    .delete(qualities[0].length+("return ".length)+1).pause(200)
+    .type('<span style="color: #f08d49; padding-left: 4ch;">with </span>').pause(300)
+    .type('<span style="color: #a9eca6">' + qualities[1] + '</span><span style="color: #fff">;</span>').pause(700)
+    .delete(qualities[1].length+("with ".length)+1).pause(200)
+    .type('<span style="color: #f08d49; padding-left: 4ch;">and </span>').pause(300)
+    .type('<span style="color: #a9eca6; position: relative;" class="quality-item" ref="quality">' + qualities[2] + '</span><span style="color: #fff">;</span>')
     .pause(200)
     .break()
-    // .pause(200)
     .type('}')
-    // .options({
-    //   cursorSpeed: 0
-    // })
     .pause(500)
     .exec(async() => {
       var cursor = document.getElementsByClassName("ti-cursor")[0];
       if(typeof cursor !== "undefined") {
         cursor.style.animation = "none";
         cursor.style.WebkitAnimation = "none";
+        cursor.classList.add("block");
+        cursor.style.width = "2px";
+        cursor.style.height = "27px";
+        cursor.innerText = "";
+        cursor.style.backgroundColor = "#fff";
+        const startPoint = (window.innerWidth / 2) - (document.getElementById("typewriter").offsetLeft)
+        const endPoint = ((document.getElementById("typewriter").offsetLeft) + (window.innerWidth * 0.1)) * -1
+        window.setTimeout(() => {
+          tl.add({
+            targets: cursor,
+            translateX: startPoint,
+            translateY: "+=15px",
+            duration: 500
+          })
+          .add({
+            targets: cursor,
+            width: "120vw",
+            height: "60vh",
+            backgroundColor: "#75a0b5",
+            translateX: endPoint,
+            duration: 1000,
+            easing: "easeOutQuart"
+          })
+          .add({
+            targets: cursor,
+            opacity: 0,
+            duration: 1000,
+            delay: 500
+          })
+        }, 300)
+        window.setTimeout(() => {
+          if(window.scrollY < (window.innerHeight / 3)) {
+            this.$scrollTo(document.getElementById("start"), 1000)
+            return "go"
+            // var elem = window.document.getElementsByClassName('quality-item')[0]
+            // elem.nextSibling.style.opacity = 0;
+            // elem.previousSibling.style.display = "inline-block"
+            // elem.previousSibling.style.transform = "translateY(-6px)"
+            // elem.style.color = "#282c34"
+            // elem.style.display = "inline-block"
+            // elem.style.left = "1ch"
+            // elem.style.overflow = "hidden"
+            // for(var i=0; i<3; i++) {
+            //   var span = document.createElement("span")
+            //   span.classList.add("quality-child")
+            //   span.style.color="#a9eca6"
+            //   span.style.position="absolute"
+            //   span.style.left="0"
+            //   span.innerText = qualities[i]
+            //   span.style.opacity = 0
+            //   elem.appendChild(span)
+            // }
+          }
+        }, 1300);
       }
-      return "go"
     })
-    // .pause(200)
+    .pause(3000)
     .go();
   },
   methods: {
@@ -96,25 +117,23 @@ export default {
 </script>
 
 <style lang="scss">
+
   #typewriter {
     margin: 0 auto;
-    /*position: relative;*/
-    /*top: 40vh;*/
+    box-sizing: border-box;
     min-height: 4em;
     height: 20vh;
     text-align: left;
     line-height: 1.25;
     max-width: 100%;
-    width: 23em;
     padding: 10px;
     color: #fff;
-    font-size: 1em;
-    @include mq("small-phone") {
-      font-size: 1.2em;
-    }
-    box-sizing: border-box;
-    @include mq("phone") {
-      font-size: 1.6em;
+    width: 320px;
+    font-size: 3.5vw;
+    width: calc(80vw + 20px);
+    @media only screen and (min-width: 690px) {
+      font-size: 24px;
+      width: 570px;
     }
     letter-spacing: 1px;
     font-family: "Inconsolata", monospace;
@@ -139,5 +158,38 @@ export default {
   #letsgo {
     position: relative;
     top: 200vh;
+  }
+
+  @keyframes rotateWords {
+    0% { 
+      opacity: 0;
+      transform: translateY(30px)
+    }
+    12% { 
+      opacity: 1; 
+      transform: translateY(0);
+    }
+    35% { 
+      opacity: 1; 
+      transform: translateY(0);
+    }
+    45% { 
+      opacity: 0; 
+      transform: translateY(-30px)
+    }
+    100% { 
+      opacity: 0; 
+      transform: translateY(30px)
+    }
+  }
+
+  .quality-child {
+    animation: rotateWords 4s linear infinite 0s;
+    &:nth-child(2) { 
+      animation-delay: 1.333s; 
+    }
+    &:nth-child(3) { 
+      animation-delay: 2.666s; 
+    }
   }
 </style>

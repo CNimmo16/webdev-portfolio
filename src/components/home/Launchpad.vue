@@ -21,36 +21,41 @@
             <!--    <li><img src="@/assets/skill-icons/vue.png"><span>able to use Vue JS to build Single Page Applications with SSR implementation if needed.</span></li>-->
             <!--    <li><img src="@/assets/skill-icons/node.png"><span>able to build and deploy a full-stack site from scratch using Node JS (Express) and MongoDB.</span></li>-->
             <!--</ul>-->
-            <p class="para para--shadow">
+            <p class="para para--shadow" style="padding-bottom: 10px;">
                 No one should still have to pick between a website that looks beautiful, and one that works beautifully. I love creating rich, immersive Javascript powered web applications that look great. But I also work hard to ensure beauty doesn't come at the expense of responsiveness or user experience.
             </p>
-            <h3 class="title title--small title--shadow">I build sites with... </h3>
+            <!-- <h3 class="title title--small title--shadow">I build sites with... </h3>
             <ul class="list list--shadow freelance skills">
-                <li><img src="@/assets/skill-icons/html5.png">Highly semantic markup and object oriented styling which is a pleasure to read, and a breeze to maintain.</li>
+                <li><img src="@/assets/skill-icons/html5.png">Well structured, semantic markup and styling which is a pleasure to read, and a breeze to maintain.</li>
                 <li><img src="@/assets/skill-icons/js.png">Javascript that is well optimised, but sparingly used, with minimal dependency on external libraries, boosting code reliability and reducing maintenance work</li>
                 <li><img src="@/assets/skill-icons/gsap.png">Thoughtful and intuitive ui animation effects to snazz things up and/or improve usability</li>
                 <li><img src="@/assets/skill-icons/node.png">An efficient, modern NodeJS backend if needed, built on a well structured NoSQL database.</li>
-            </ul>
+            </ul> -->
+            <button class="button button--light cta" v-scroll-to="{
+            el: '#projects',
+            easing: 'ease',
+            duration: 1000
+        }">Check out my work</button>
         </div>
-        <!--<div class="down-button" v-scroll-to="{-->
-        <!--    el: '#projects',-->
-        <!--    easing: 'ease',-->
-        <!--    duration: 1000-->
-        <!--}">-->
-        <!--    <span>Scroll to see my work</span>-->
-        <!--    <svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" height="40" width="100" version="1.1" viewBox="0 0 26.458333 10.583247">-->
-        <!--     <linearGradient id="svg-gradient" x2="1" y2="1">-->
-        <!--        <stop offset="0%" stop-color="#fff" />-->
-        <!--        <stop offset="20%" stop-color="#ddd" />-->
-        <!--        <stop offset="100%" stop-color="#fff" />-->
-        <!--      </linearGradient>-->
-        <!--     <g transform="translate(-.0050005 -286.42)">-->
-        <!--      <g transform="matrix(.26458 0 0 .25993 -10.111 261.77)">-->
-        <!--       <path d="m138.14 95.001-49.952 29.229-49.864-29.229l-0.000013 11.22 49.862 29.228 49.954-29.228z" fill-opacity="0" stroke="#fff" stroke-width=".18438"/>-->
-        <!--      </g>-->
-        <!--     </g>-->
-        <!--    </svg>-->
-        <!--</div>-->
+        <div class="down-button" v-scroll-to="{
+            el: '#projects',
+            easing: 'ease',
+            duration: 1000
+        }">
+           <!-- <span>Get scrolling</span> -->
+           <svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" height="40" width="100" version="1.1" viewBox="0 0 26.458333 10.583247">
+            <linearGradient id="svg-gradient" x2="1" y2="1">
+               <stop offset="0%" stop-color="#fff" />
+               <stop offset="20%" stop-color="#ddd" />
+               <stop offset="100%" stop-color="#fff" />
+             </linearGradient>
+            <g transform="translate(-.0050005 -286.42)">
+             <g transform="matrix(.26458 0 0 .25993 -10.111 261.77)">
+              <path d="m138.14 95.001-49.952 29.229-49.864-29.229l-0.000013 11.22 49.862 29.228 49.954-29.228z" fill-opacity="0" stroke="#fff" stroke-width=".18438"/>
+             </g>
+            </g>
+           </svg>
+        </div>
     </section>
 </template>
 

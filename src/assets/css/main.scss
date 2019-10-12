@@ -21,9 +21,10 @@ body {
 
 
 .section {
+    position: relative;
     height: auto;
     min-height: 100vh;
-    padding: 130px 4% 50px 4%;
+    padding: 10vh 4% 40px 4%;
     box-sizing: border-box;
     &--light {
         background-color: $palette-background-light;
@@ -126,11 +127,11 @@ body {
     @extend %font-slabo;
     font-weight: 400;
     letter-spacing: 3px;
-    font-size: 3.4em;
+    font-size: 54px;
     text-transform: uppercase;
     position: relative;
     width: fit-content;
-    margin: 0 auto;
+    margin: 10px auto 35px auto;
     z-index: 5;
 }
 
@@ -401,14 +402,29 @@ a {
 }
 
 button, .button {
+    display: block;
     outline: none;
     border: none;
     background-color: $palette-background-blue;
     color: #fff;
+    cursor: pointer;
+    &--light {
+        background-color: $palette-background-light;
+        color: $palette-text-blue;
+        &:hover {
+            background-color: #e1eaef !important;
+        }
+    }
     @extend %font-merri;
     border-radius: 5px;
     font-size: 1em;
     padding: 8px 15px;
+    &.cta {
+        @extend %font-slabo;
+        font-size: 27px;
+        padding: 8px 28px;
+        letter-spacing: 1.5px;
+    }
     position: relative;
     $w: 2px;
     border-bottom: $w solid $palette-text-dark;
