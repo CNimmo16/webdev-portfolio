@@ -105,7 +105,7 @@ export default {
     text-align: left;
     line-height: 1.25;
     max-width: 100%;
-    width: 26em;
+    width: 23em;
     padding: 10px;
     color: #fff;
     font-size: 1em;
@@ -116,7 +116,8 @@ export default {
     @include mq("phone") {
       font-size: 1.6em;
     }
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    letter-spacing: 1px;
+    font-family: "Inconsolata", monospace;
     a {
       color: #fff;
       cursor: pointer;

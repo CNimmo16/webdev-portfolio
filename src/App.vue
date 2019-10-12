@@ -67,7 +67,7 @@
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,600|Rokkitt|Slabo+27px|Alegreya');
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans:300,400,600|Inconsolata|Slabo+27px');
 
 #app {
   font-family: 'Merriweather Sans', Helvetica, Arial, sans-serif;

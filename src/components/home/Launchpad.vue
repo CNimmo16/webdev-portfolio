@@ -21,7 +21,8 @@
             <!--    <li><img src="@/assets/skill-icons/vue.png"><span>able to use Vue JS to build Single Page Applications with SSR implementation if needed.</span></li>-->
             <!--    <li><img src="@/assets/skill-icons/node.png"><span>able to build and deploy a full-stack site from scratch using Node JS (Express) and MongoDB.</span></li>-->
             <!--</ul>-->
-            <p class="para para--shadow">It's 2019: no one should still have to pick between a website that looks beautiful, and one that works beautifully. I love creating rich, immersive Javascript powered web applications that look great. But I also work hard to ensure beauty doesn't come at the expense of responsiveness or user experience.
+            <p class="para para--shadow">
+                No one should still have to pick between a website that looks beautiful, and one that works beautifully. I love creating rich, immersive Javascript powered web applications that look great. But I also work hard to ensure beauty doesn't come at the expense of responsiveness or user experience.
             </p>
             <h3 class="title title--small title--shadow">I build sites with... </h3>
             <ul class="list list--shadow freelance skills">
