@@ -21,9 +21,13 @@
             <!--    <li><img src="@/assets/skill-icons/vue.png"><span>able to use Vue JS to build Single Page Applications with SSR implementation if needed.</span></li>-->
             <!--    <li><img src="@/assets/skill-icons/node.png"><span>able to build and deploy a full-stack site from scratch using Node JS (Express) and MongoDB.</span></li>-->
             <!--</ul>-->
-            <p class="para para--shadow" style="padding-bottom: 10px;">
+
+            <!-- <p class="para para--shadow" style="padding-bottom: 10px;">
                 No one should still have to pick between a website that looks beautiful, and one that works beautifully. I love creating rich, immersive Javascript powered web applications that look great. But I also work hard to ensure beauty doesn't come at the expense of responsiveness or user experience.
-            </p>
+            </p> -->
+
+            <p class="para para--shadow" style="font-size: 1.1em">I make <span class="beautiful">beautiful</span> web apps with well written code.</p>
+
             <!-- <h3 class="title title--small title--shadow">I build sites with... </h3>
             <ul class="list list--shadow freelance skills">
                 <li><img src="@/assets/skill-icons/html5.png">Well structured, semantic markup and styling which is a pleasure to read, and a breeze to maintain.</li>
@@ -31,7 +35,7 @@
                 <li><img src="@/assets/skill-icons/gsap.png">Thoughtful and intuitive ui animation effects to snazz things up and/or improve usability</li>
                 <li><img src="@/assets/skill-icons/node.png">An efficient, modern NodeJS backend if needed, built on a well structured NoSQL database.</li>
             </ul> -->
-            <button class="button button--light cta" v-scroll-to="{
+            <button class="button button--light cta" style="opacity: 0;" v-scroll-to="{
             el: '#projects',
             easing: 'ease',
             duration: 1000
@@ -129,6 +133,12 @@
                     easing: "linear"
                 }, "-=800")
                 .add({
+                    targets: "#start .cta",
+                    opacity: 1,
+                    easing: "easeInQuad",
+                    duration: 900
+                }, "-=300")
+                .add({
                     targets: "#start h3",
                     translateY: [-20, 0],
                     duration: 1000,
@@ -215,6 +225,20 @@
         #start p {
             opacity: 0;
         }
+
+        span.beautiful {
+            font-family: "Dancing Script";
+            font-size: 1.8em;
+            line-height: 1;
+            // text-shadow: none;
+            // font-family: "Alegreya Sans SC"
+        }
+
+        span.clean {
+            font-family: "Alegreya Sans SC";
+            font-size: 1.5em;
+        }
+
         ul.nutshell {
             display: flex;
             width: 100%;
