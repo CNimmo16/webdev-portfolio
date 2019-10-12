@@ -1,7 +1,10 @@
 <template>
     <section id="lab"  class="section section--dark">
         <div class="section__content">
-            <h1 class="section__header">The Lab</h1>
+            <div class="wave-header">
+                <div class="wave"></div>
+                <h1 class="section__header">The Lab</h1>
+            </div>
             <p class="section__intro">A showcase of funky experimental stuff that I created either as part of another project, or as a challenge to improve my skills.</p>
             <div class="showcase">
                 <LabItem v-for="(project, index) in projectData" :project="project" :key="index" />
@@ -87,6 +90,11 @@
     #lab {
         .section__header {
             &::after { border-left: 6px solid $palette-lab-yellow; }
+        }
+        .wave {
+            --wave-color: #e09100;
+            left: 14px;
+            right: 6px;
         }
     }
 </style>

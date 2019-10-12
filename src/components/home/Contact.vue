@@ -67,6 +67,7 @@
             display: flex;
             flex-direction: column-reverse;
             margin: 0px 0 35px 0;
+            padding: 0 12px;
             .title {
                 color: #385b6d;
                 margin-bottom: 10px;

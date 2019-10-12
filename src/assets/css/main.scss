@@ -72,23 +72,76 @@ body {
     }
 }
 
+@keyframes border-wave-y {
+    0% { border-bottom-width: 6px; }
+    14% { border-bottom-width: 13px; }
+    33% { border-bottom-width: 8px; }
+    46% { border-bottom-width: 16px; }
+    66% { border-bottom-width: 7px; }
+    79% { border-bottom-width: 15px; }
+    100% { border-bottom-width: 6px; }
+}
+
+// @keyframes border-wave-x {
+//     0% { left: -40px; }
+//     12% { left: -34px; }
+//     34% { left: -27px; }
+//     44% { left: -20px; }
+//     65% { left: -13px; }
+//     81% { left: -6px; }
+//     100% { left: 0px; }
+// }
+
+@keyframes border-wave-x {
+    0% { left: -40px; }
+    100% { left: 0px; }
+}
+
+.wave-header {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    .wave {
+        // $wave-color: #b0dce6;
+        --wave-color: #c1d8e2;
+        position: absolute;
+        left: 6px;
+        right: 9px;
+        bottom: 16px;
+        top: 14px;
+        overflow: hidden;
+        &::before, &::after{
+            content: "";
+            position: absolute;
+            border-bottom: 5px solid var(--wave-color);
+            left: -20px;
+            right: 0;
+            bottom: 0;
+            animation: border-wave-x 4s infinite cubic-bezier(.45,.15,.57,.88), border-wave-y 6s infinite linear;
+        }
+        &::before{
+            height: 10px;
+            background-size: 20px 40px;
+            background-image: radial-gradient(circle at 4px -10px, transparent 20px, var(--wave-color) 21px);
+        }
+        &::after{
+            height: 15px;
+            background-size: 40px 40px;
+            background-image:  radial-gradient(circle at 10px 26px, var(--wave-color) 20px, transparent 21px);
+        }
+    }
+}
+
 .section__header {
-    @extend %font-merri;
+    @extend %font-slabo;
+    font-weight: 400;
     letter-spacing: 3px;
-    font-size: 36px;
+    font-size: 3.4em;
     text-transform: uppercase;
     position: relative;
-    padding-left: 22px;
     width: fit-content;
-    &::after {
-        position: absolute;
-        content: "";
-        top: 3px;
-        left: 0;
-        right: 0;
-        bottom: 3px;
-        border-left: 6px solid #648a9d;
-    }
+    margin: 0 auto;
+    z-index: 5;
 }
 
 .showcase {
