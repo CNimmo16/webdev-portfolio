@@ -82,16 +82,6 @@ body {
     100% { border-bottom-width: 2px; }
 }
 
-// @keyframes border-wave-x {
-//     0% { left: -40px; }
-//     12% { left: -34px; }
-//     34% { left: -27px; }
-//     44% { left: -20px; }
-//     65% { left: -13px; }
-//     81% { left: -6px; }
-//     100% { left: 0px; }
-// }
-
 @keyframes border-wave-x {
     0% { left: -40px; }
     100% { left: 0px; }

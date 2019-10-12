@@ -89,6 +89,7 @@
 <style lang="scss">
     #lab {
         .section__header {
+            text-shadow: 2px 0px black;
             &::after { border-left: 6px solid $palette-lab-yellow; }
         }
         .wave {
