@@ -5,7 +5,7 @@
                 <div class="wave"></div>
                 <h1 class="section__header">Projects</h1>
             </div>
-            <p class="section__intro">Check out my latest work</p>
+            <!-- <p class="section__intro">Check out my latest work</p> -->
             <div class="showcase">
                 <ProjectItem v-for="(project, index) in projectData" :project="project" :key="index" />
             </div>

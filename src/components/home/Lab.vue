@@ -5,7 +5,7 @@
                 <div class="wave"></div>
                 <h1 class="section__header">The Lab</h1>
             </div>
-            <p class="section__intro">A showcase of funky experimental stuff that I created either as part of another project, or as a challenge to improve my skills.</p>
+            <!-- <p class="section__intro">A showcase of funky experimental stuff that I created either as part of another project, or as a challenge to improve my skills.</p> -->
             <div class="showcase">
                 <LabItem v-for="(project, index) in projectData" :project="project" :key="index" />
             </div>
