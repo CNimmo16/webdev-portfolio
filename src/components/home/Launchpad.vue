@@ -3,45 +3,31 @@
         <div class="section__content section__content--compact">
             <h1 class="title title--medium title--shadow">Hi, I'm Cameron,</h1>
             
-            <h2 class="title title--big title--shadow" v-show="!isPhone">
+            <h2 class="title title--big title--shadow" v-if="winWidth > 595">
                 <span v-for="(letter, index) in titleText.slice(0,38)" :key="index" class="title-letter">{{ letter }}</span>
                 <br>
                 <span v-for="(letter, index) in titleText.slice(39)" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
             </h2>
-            <h2 class="title title--big title--shadow" v-show="isPhone">
+            <h2 class="title title--big title--shadow" v-else-if="winWidth > 450">
                 <span v-for="(letter, index) in titleText.slice(0,20)" :key="index" class="title-letter">{{ letter }}</span>
                 <br>
                 <span v-for="(letter, index) in titleText.slice(21)" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
             </h2>
-            <!--<p>After a two year hiatus of travelling and part time jobs trying to work out what I enjoyed doing, I tried out a udemy course in web development and realised it was this. After spending <span>{{ "2018-12-11" | moment("from", "now", true) }}</span> studying web development independently, I am: -->
-            <!--</p>-->
-            <!--<ul class="employer skills">-->
-            <!--    <li><img src="@/assets/skill-icons/html5.png"><span>proficient in HTML5 and CSS including layout, design and animation.</span></li>-->
-            <!--    <li><img src="@/assets/skill-icons/js.png"><span>skilled at using JavaScript, able to make full use of ES6 and newer features where possible and beneficial.</span></li>-->
-            <!--    <li><img src="@/assets/skill-icons/vue.png"><span>able to use Vue JS to build Single Page Applications with SSR implementation if needed.</span></li>-->
-            <!--    <li><img src="@/assets/skill-icons/node.png"><span>able to build and deploy a full-stack site from scratch using Node JS (Express) and MongoDB.</span></li>-->
-            <!--</ul>-->
+            <h2 class="title title--big title--shadow" v-else>
+                <span v-for="(letter, index) in titleText.slice(0,17)" :key="index" class="title-letter">{{ letter }}</span>
+                <br>
+                <span v-for="(letter, index) in titleText.slice(17)" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
+            </h2>
 
-            <!-- <p class="para para--shadow" style="padding-bottom: 10px;">
-                No one should still have to pick between a website that looks beautiful, and one that works beautifully. I love creating rich, immersive Javascript powered web applications that look great. But I also work hard to ensure beauty doesn't come at the expense of responsiveness or user experience.
-            </p> -->
+            <p class="para para--shadow" style="font-size: 1.1em; margin: 40px 0;">I make <span class="beautiful">beautiful</span> web apps with well written code.</p>
 
-            <p class="para para--shadow" style="font-size: 1.1em">I make <span class="beautiful">beautiful</span> web apps with well written code.</p>
-
-            <!-- <h3 class="title title--small title--shadow">I build sites with... </h3>
-            <ul class="list list--shadow freelance skills">
-                <li><img src="@/assets/skill-icons/html5.png">Well structured, semantic markup and styling which is a pleasure to read, and a breeze to maintain.</li>
-                <li><img src="@/assets/skill-icons/js.png">Javascript that is well optimised, but sparingly used, with minimal dependency on external libraries, boosting code reliability and reducing maintenance work</li>
-                <li><img src="@/assets/skill-icons/gsap.png">Thoughtful and intuitive ui animation effects to snazz things up and/or improve usability</li>
-                <li><img src="@/assets/skill-icons/node.png">An efficient, modern NodeJS backend if needed, built on a well structured NoSQL database.</li>
-            </ul> -->
             <button class="button button--light cta" style="opacity: 0;" v-scroll-to="{
             el: '#projects',
             easing: 'ease',
             duration: 1000
         }">Check out my work</button>
         </div>
-        <div class="down-button" v-scroll-to="{
+        <div class="down-button" v-if="winWidth > 595" v-scroll-to="{
             el: '#projects',
             easing: 'ease',
             duration: 1000
@@ -73,7 +59,7 @@
                 startDate: "2013-02-08",
                 titleText: "I'm a full-stack web developer",
                 interactive: false,
-                isPhone: null,
+                winWidth: null,
                 animating: false
             }
         },
@@ -90,9 +76,9 @@
             }
         },
         mounted() {
-            this.isPhone = window.innerWidth < 615;
+            this.winWidth = window.innerWidth;
             window.addEventListener("resize", () => {
-                this.isPhone = window.innerWidth < 615
+                this.winWidth = window.innerWidth
                 for(const letter of document.getElementsByClassName("title-letter")) {
                     letter.style.transform = "scale(1) translateY(0)" 
                 }

@@ -16,7 +16,7 @@ export default {
       // duration: 750,
     });
     var qualities = ['"cutting edge web apps"', '"quality code"', '"slick design"']
-    const typewriter = new this.$typeit('#typewriter', {
+    new this.$typeit('#typewriter', {
       speed: 80,
       deleteSpeed: 20,
       waitUntilVisible: true,
@@ -129,8 +129,8 @@ export default {
     padding: 10px;
     color: #fff;
     width: 320px;
-    font-size: 3.5vw;
-    width: calc(80vw + 20px);
+    font-size: 3.3vw;
+    width: calc(75vw + 50px);
     @media only screen and (min-width: 690px) {
       font-size: 24px;
       width: 570px;
