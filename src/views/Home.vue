@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <Intro />
+    <!-- <Intro /> -->
     <Launchpad />
     <Projects />
     <Lab />

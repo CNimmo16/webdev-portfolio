@@ -1,12 +1,15 @@
 <template>
-    <section id="start" class="section section--blue section--floating">
+    <section style="background: #263740 !important" id="start" class="section section--blue section--floating">
         <div class="section__content section__content--compact">
             <h1 class="title title--medium title--shadow">Hi, I'm Cameron,</h1>
             
             <h2 class="title title--big title--shadow" v-if="winWidth > 595">
-                <span v-for="(letter, index) in titleText.slice(0,38)" :key="index" class="title-letter">{{ letter }}</span>
-                <br>
-                <span v-for="(letter, index) in titleText.slice(39)" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
+                <span v-for="(letter, index) in titleText.slice(0,18)" :key="index" class="title-letter">{{ letter }}</span>
+                <span class="rolodex" :class="{'animate': animateRolodex}">
+                    <span class="rolodex__phrase" v-for="(word, index) in wordList" :key="index">
+                        <span v-for="(letter, i) in word" :key="i + 'line2'" :ref="index === wordList.length - 1 ? 'rolodex-letter' : null" class="rolodex-letter">{{ letter }}</span>
+                    </span>
+                </span>
             </h2>
             <h2 class="title title--big title--shadow" v-else-if="winWidth > 450">
                 <span v-for="(letter, index) in titleText.slice(0,20)" :key="index" class="title-letter">{{ letter }}</span>
@@ -17,9 +20,12 @@
                 <span v-for="(letter, index) in titleText.slice(0,17)" :key="index" class="title-letter">{{ letter }}</span>
                 <br>
                 <span v-for="(letter, index) in titleText.slice(17)" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
+                <span>
+                    <span v-for="(letter, index) in titleText.slice(17)" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
+                </span>
             </h2>
 
-            <p class="para para--shadow" style="font-size: 1.1em; margin: 40px 0;">I make <span class="beautiful">beautiful</span> web apps with well written code.</p>
+            <p class="para para--shadow" style="color: #d0a0a0; font-size: 1.1em; margin: 40px 0;">I make <span class="beautiful">beautiful</span> web apps with well written code.</p>
 
             <button class="button button--light cta" style="opacity: 0;" v-scroll-to="{
             el: '#projects',
@@ -56,11 +62,13 @@
         name: "launchpad",
         data() {
             return {
+                animateRolodex: false,
                 startDate: "2013-02-08",
-                titleText: "I'm a full-stack web developer",
+                titleText: "I'm a full-stack ",
                 interactive: false,
                 winWidth: null,
-                animating: false
+                animating: false,
+                wordList: ["web developer", "designer", "artist", "creative", "kinda guy"]
             }
         },
         computed: {
@@ -87,6 +95,13 @@
         methods: {
             beginAnimation() {
                 this.animating = true;
+                this.animateRolodex = true;
+                window.setTimeout(() => {
+                    this.animateRolodex = false;
+                    this.$refs["rolodex-letter"].forEach(x => {
+                        x.style.opacity = 1;
+                    })
+                }, 6600)
                 let entrance = this.$anime.timeline({
                     complete: () => {
                         this.interactive = true;
@@ -268,4 +283,68 @@
                 }
             }
         }
+
+@keyframes rotateWords {
+0% { 
+    opacity: 0;
+    transform: translateY(30px)
+    }
+    7% { 
+    opacity: 1; 
+    transform: translateY(0);
+    }
+    25% { 
+    opacity: 1; 
+    transform: translateY(0);
+    }
+    35% { 
+    opacity: 0; 
+    transform: translateY(-30px)
+    }
+    100% { 
+    opacity: 0; 
+    transform: translateY(30px)
+    }
+}
+
+.rolodex {
+    // ["web developer", "designer", "artist", "scientist", "creative"]
+    position: relative;
+    .rolodex__phrase {
+        width: 400px;
+        position: absolute;
+        .rolodex-letter {
+            opacity: 0;
+        }
+        &:nth-of-type(2) .rolodex-letter { 
+        animation-delay: 1.33s; 
+        }
+        &:nth-of-type(3) .rolodex-letter { 
+        animation-delay: 2.66s; 
+        }
+        &:nth-of-type(4) .rolodex-letter { 
+        animation-delay: 4s; 
+        }
+        &:nth-of-type(5) .rolodex-letter { 
+        animation-delay: 5.33s; 
+        }
+    }
+    &.animate .rolodex__phrase {
+        .rolodex-letter {
+            animation: rotateWords 6.6s linear infinite 0s;
+        }
+        &:nth-of-type(2) .rolodex-letter { 
+            animation-delay: 1.33s; 
+        }
+        &:nth-of-type(3) .rolodex-letter { 
+            animation-delay: 2.66s; 
+        }
+        &:nth-of-type(4) .rolodex-letter { 
+            animation-delay: 4s; 
+        }
+        &:nth-of-type(5) .rolodex-letter { 
+            animation-delay: 5.33s; 
+        }
+    }
+}
 </style>
