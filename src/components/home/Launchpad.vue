@@ -1,27 +1,19 @@
 <template>
     <section style="background: #263740 !important" id="start" class="section section--blue section--floating">
         <div class="section__content section__content--compact">
-            <h1 class="title title--medium title--shadow">Hi, I'm Cameron,</h1>
+            <h1 class="title title--medium title--shadow" style="margin-bottom: 1px;">Hi, I'm Cameron,</h1>
             
-            <h2 class="title title--big title--shadow" v-if="winWidth > 595">
-                <span v-for="(letter, index) in titleText.slice(0,18)" :key="index" class="title-letter">{{ letter }}</span>
+            <h2 class="title title--big title--shadow" style="line-height: 1;">
+                <span v-for="(letter, index) in titleText[0]" :key="index" class="title-letter">{{ letter }}</span>
+                <span v-for="(letter, index) in titleText[1]" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
+                <!-- <span>web developer</span> -->
                 <span class="rolodex" :class="{'animate': animateRolodex}">
-                    <span class="rolodex__phrase" v-for="(word, index) in wordList" :key="index">
-                        <span v-for="(letter, i) in word" :key="i + 'line2'" :ref="index === wordList.length - 1 ? 'rolodex-letter' : null" class="rolodex-letter">{{ letter }}</span>
+                    <span class="rolodex__phrase" v-for="(word, index) in wordList" ref="rolodex-phrase" :key="index">
+                        <span class="rolodex-letter title-letter"
+                        v-for="(letter, i) in word" 
+                        :ref="index === 0 ? 'first-rolodex-phrase' : 'rolodex-letter'"
+                        :key="i + 'line2'" >{{ letter }}</span>
                     </span>
-                </span>
-            </h2>
-            <h2 class="title title--big title--shadow" v-else-if="winWidth > 450">
-                <span v-for="(letter, index) in titleText.slice(0,20)" :key="index" class="title-letter">{{ letter }}</span>
-                <br>
-                <span v-for="(letter, index) in titleText.slice(21)" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
-            </h2>
-            <h2 class="title title--big title--shadow" v-else>
-                <span v-for="(letter, index) in titleText.slice(0,17)" :key="index" class="title-letter">{{ letter }}</span>
-                <br>
-                <span v-for="(letter, index) in titleText.slice(17)" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
-                <span>
-                    <span v-for="(letter, index) in titleText.slice(17)" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
                 </span>
             </h2>
 
@@ -64,26 +56,28 @@
             return {
                 animateRolodex: false,
                 startDate: "2013-02-08",
-                titleText: "I'm a full-stack ",
+                titleTextRaw: "I'm a full-stack ",
                 interactive: false,
                 winWidth: null,
                 animating: false,
-                wordList: ["web developer", "designer", "artist", "creative", "kinda guy"]
+                wordList: ["web developer", "designer", "artist", "creative", "web developer"]
             }
         },
         computed: {
-            pageInView() {
-                return this.$store.state.page
-            }
-        },
-        watch: {
-            pageInView: function(newValue, oldValue) {
-                if(newValue === 1 && oldValue !== 1 && !this.animating) {
-                    this.beginAnimation();
+            titleText() {
+                if(this.winWidth > 595) {
+                    return [this.titleTextRaw, ""]
+                } else if(this.winWidth > 450) {
+                    return [this.titleTextRaw.slice(0, 20), this.titleTextRaw.slice(20)]
+                } else {
+                    return [this.titleTextRaw.slice(0, 17), this.titleTextRaw.slice(17)]
                 }
             }
         },
         mounted() {
+            setTimeout(() => {
+                this.beginAnimation();
+            }, 500)
             this.winWidth = window.innerWidth;
             window.addEventListener("resize", () => {
                 this.winWidth = window.innerWidth
@@ -94,20 +88,19 @@
         },
         methods: {
             beginAnimation() {
-                this.animating = true;
-                this.animateRolodex = true;
-                window.setTimeout(() => {
-                    this.animateRolodex = false;
-                    this.$refs["rolodex-letter"].forEach(x => {
-                        x.style.opacity = 1;
-                    })
-                }, 6600)
+                this.$refs["first-rolodex-phrase"].forEach(x => {
+                    x.style.translateY = 0;
+                    x.style.opacity = 1
+                    x.style.scale = 0
+                })
+                this.$refs["rolodex-letter"].forEach(x => {
+                    x.style.opacity = 0
+                })
                 let entrance = this.$anime.timeline({
                     complete: () => {
                         this.interactive = true;
                     }
                 });
-            
                 entrance
                 .add({
                     targets: "#start h1",
@@ -138,64 +131,48 @@
                     opacity: 1,
                     easing: "easeInQuad",
                     duration: 900
-                }, "-=300")
-                .add({
-                    targets: "#start h3",
-                    translateY: [-20, 0],
-                    duration: 1000,
-                    easing: "easeOutQuad"
-                }, "-=700")
-                .add({
-                    targets: "#start h3",
-                    opacity: 1,
-                    duration: 1000,
-                    easing: "linear"
-                }, "-=1000")
-                .add({
-                    targets: "#start .skills li",
-                    translateY: [-20, 0],
-                    duration: 1000,
-                    easing: "easeOutQuad",
-                    delay: this.$anime.stagger(120),
-                }, "-=1000")
-                .add({
-                    targets: "#start .skills li",
-                    opacity: 1,
-                    duration: 300,
-                    easing: "linear",
-                    delay: this.$anime.stagger(120),
-                    complete: () => {
-                        let entrance = this.$anime.timeline({
-                            loop: true,
-                        })
-                        
-                        entrance
-                        .add({
-                            targets: "#start .title-letter",
-                            keyframes: [
-                                {translateY: 0},
-                                {translateY: -6},
-                                {translateY: 0},
-                            ],
-                            elasticity: 200,
-                            duration: 200,
-                            easing: "easeInOutQuad",
-                            delay: this.$anime.stagger(20, {start: 1000})
-                        })
-                        .add({
-                            targets: "#start .skills li img",
-                            keyframes: [
-                                {translateY: 0},
-                                {translateY: -5},
-                                {translateY: 0},
-                            ],
-                            elasticity: 200,
-                            duration: 500,
-                            easing: "easeInOutQuad",
-                            delay: this.$anime.stagger(130),
-                        })
+                }, "-=300");
+
+                setTimeout(() => {
+                    var tl = this.$anime.timeline({
+                        loop: true
+                    })
+                    var phrases = this.$refs["rolodex-phrase"]
+                    const duration = 900
+                    var keyframes = [
+                        {
+                            duration,
+                            opacity: 1,
+                            translateY: [-30, 0]
+                        },
+                        {
+                            duration,
+                            opacity: [1,0],
+                            translateY: [0, 30]
+                        }
+                    ]
+                    var count = 0
+                    for(var i=0; i<phrases.length; i++) {
+                        var e = {
+                            targets: phrases[i].children,
+                            elasticity: 700,
+                        }
+                        var delays = [2000, 200, 900, 900, 900, 900]
+                        if(i === 0) { 
+                            e.opacity = 0
+                            e.translateY = 30
+                            e.duration = 450
+                        } else if(i === phrases.length-1) {
+                            e.opacity = 1
+                            e.translateY = [-30,0]
+                            e.duration = duration
+                        } else {
+                            e.keyframes = keyframes
+                        }
+                        tl.add(e, count + delays[i])
+                        count += delays[i]
                     }
-                }, "-=1300")
+                }, 2500)
             },
             getOffset( el ) {
                 var _x = 0;
@@ -213,98 +190,29 @@
 
 <style lang="scss" scoped>
 
-        h1, h3 {
-            opacity: 0;
-        }
-        .title-letter {
-            display: inline-block;
-            transform: scale(0);
-            opacity: 1;
-            min-width: 0.7ch;
-            transform-origin: 20% 150%;
-        }
-        #start p {
-            opacity: 0;
-        }
-
-        span.beautiful {
-            font-family: "Dancing Script";
-            font-size: 1.8em;
-            line-height: 1;
-            // text-shadow: none;
-            // font-family: "Alegreya Sans SC"
-        }
-
-        span.clean {
-            font-family: "Alegreya Sans SC";
-            font-size: 1.5em;
-        }
-
-        ul.nutshell {
-            display: flex;
-            width: 100%;
-            li {
-                padding: 0 10px;
-                color: $palette-background-light;
-                &:nth-of-type(1) {
-                    padding-left: 0;
-                }
-            }
-        }
-        ul.skills {
-            font-size: 1em;
-            font-weight: 400;
-            letter-spacing: 0.03em;
-            li {
-                opacity: 0;
-                padding-bottom: 35px;
-                display: flex;
-                align-items: center;
-                @include mq("large-phone") {
-                    &:nth-of-type(2) {
-                        padding-left: 2em;
-                    }
-                    &:nth-of-type(3) {
-                        padding-left: 4em;
-                    }
-                    &:nth-of-type(4) {
-                        padding-left: 6em;
-                    }
-                    &:nth-of-type(5) {
-                        padding-left: 8em;
-                    }
-                }
-                img {
-                    height: 35px;
-                    padding-right: 15px;
-                }
-                span {
-                    text-transform: capitalize;
-                }
-            }
-        }
-
-@keyframes rotateWords {
-0% { 
+h1, h3 {
     opacity: 0;
-    transform: translateY(30px)
-    }
-    7% { 
-    opacity: 1; 
-    transform: translateY(0);
-    }
-    25% { 
-    opacity: 1; 
-    transform: translateY(0);
-    }
-    35% { 
-    opacity: 0; 
-    transform: translateY(-30px)
-    }
-    100% { 
-    opacity: 0; 
-    transform: translateY(30px)
-    }
+}
+.title-letter {
+    display: inline-block;
+    transform: scale(0);
+    opacity: 1;
+    min-width: 0.7ch;
+    transform-origin: 20% 150%;
+}
+#start p {
+    opacity: 0;
+}
+
+span.beautiful {
+    font-family: "Dancing Script", monospace;
+    font-size: 1.8em;
+    line-height: 1;
+}
+
+span.clean {
+    font-family: "Alegreya Sans SC";
+    font-size: 1.5em;
 }
 
 .rolodex {
@@ -313,37 +221,10 @@
     .rolodex__phrase {
         width: 400px;
         position: absolute;
+        overflow: hidden;
         .rolodex-letter {
-            opacity: 0;
-        }
-        &:nth-of-type(2) .rolodex-letter { 
-        animation-delay: 1.33s; 
-        }
-        &:nth-of-type(3) .rolodex-letter { 
-        animation-delay: 2.66s; 
-        }
-        &:nth-of-type(4) .rolodex-letter { 
-        animation-delay: 4s; 
-        }
-        &:nth-of-type(5) .rolodex-letter { 
-        animation-delay: 5.33s; 
-        }
-    }
-    &.animate .rolodex__phrase {
-        .rolodex-letter {
-            animation: rotateWords 6.6s linear infinite 0s;
-        }
-        &:nth-of-type(2) .rolodex-letter { 
-            animation-delay: 1.33s; 
-        }
-        &:nth-of-type(3) .rolodex-letter { 
-            animation-delay: 2.66s; 
-        }
-        &:nth-of-type(4) .rolodex-letter { 
-            animation-delay: 4s; 
-        }
-        &:nth-of-type(5) .rolodex-letter { 
-            animation-delay: 5.33s; 
+            display: inline-block;
+            min-width: 13px;
         }
     }
 }
