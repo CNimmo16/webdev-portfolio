@@ -7,6 +7,7 @@
                 <span v-for="(letter, index) in titleText[0]" :key="index" class="title-letter">{{ letter }}</span>
                 <span v-for="(letter, index) in titleText[1]" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
                 <!-- <span>web developer</span> -->
+                <br v-if="winWidth < 590">
                 <span class="rolodex" :class="{'animate': animateRolodex}">
                     <span class="rolodex__phrase" v-for="(word, index) in wordList" ref="rolodex-phrase" :key="index">
                         <span class="rolodex-letter title-letter"
@@ -218,6 +219,10 @@ span.clean {
 .rolodex {
     // ["web developer", "designer", "artist", "scientist", "creative"]
     position: relative;
+    height: 18px;
+    @media only screen and (max-width: 589px) {
+        display: inline-block;
+    }
     .rolodex__phrase {
         width: 400px;
         position: absolute;

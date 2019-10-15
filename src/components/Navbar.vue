@@ -73,7 +73,7 @@ export default {
                       color = "grey";
                       break;
                   case 1:
-                      color = "blue";
+                      color = "grey";
                       break;
                   case 2:
                       color = "light";
@@ -121,7 +121,7 @@ export default {
         height: 100vh !important;
       }
       padding: 100px 0;
-      background-color: $palette-background-blue;
+      background-color: rgb(208, 160, 160);
       width: 100vw;
       align-items: center;
       justify-content: center;
