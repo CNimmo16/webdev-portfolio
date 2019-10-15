@@ -53,20 +53,18 @@
         &:hover {
             nav.show {
                 transform: scale(1);
-                box-shadow: -1px 6px 8px 3px rgba(0,0,0,0.2);
-                background-color: #ecf3f7;
-                /*background-color: rgba(243, 247, 249, 1);*/
+                box-shadow: -3px 2px 9px -2px rgba(0,0,0,0.25);
             }
         }
         nav {
             padding: 9px 6px;
             display: flex;
             flex-direction: column;
-            background-color: rgba(243, 247, 249, 0.7);
+            background-color: rgba(208, 160, 160, 0.8);
             border-bottom-left-radius: 10px;
             border-top-left-radius: 10px;
             transition: transform 0.25s, box-shadow 0.2s, background-color 0.2s;
-            box-shadow: -3px 2px 5px rgba(0,0,0,0.3);
+            box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.1);
             transform: scale(0.9) translateX(105%);
             transform-origin: right;
             &.show {
@@ -80,16 +78,15 @@
                 font-weight: 400;
                 transition: transform 0.2s;
                 position: relative;
+                color: #fff;
                 &:hover {
                     font-weight: 600;
-                    img {
-                        filter: drop-shadow(1px 2px 0px #555);
-                    }
                 }
                 img {
                     width: 48px;
                     height: 48px;
                     margin-bottom: 7px;
+                    filter: invert(1);
                 }
             }
         }

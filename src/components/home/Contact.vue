@@ -1,9 +1,9 @@
 <template>
     <section id="contact" class="section section--light">
-        <div class="section__content section__content--compact">
+        <div class="section__content section__content--mid">
             <div class="reversed-flow">
-                <h1 class="title title--big">Get in touch.</h1>
-                <h2 class="title title--big">Let's make something beautiful together... </h2>
+                <h1 class="title title--big" style="line-height: 1.7">Get in touch.</h1>
+                <h2 class="title title--big" style="line-height: 1.3">Let's make something beautiful together... </h2>
             </div>
             <form action="https://formspree.io/cameronnimmo@hotmail.co.uk" method="POST">
                 <div class="name">
@@ -66,7 +66,7 @@
         .reversed-flow {
             display: flex;
             flex-direction: column-reverse;
-            margin: 0px 0 35px 0;
+            margin: 0px 0 10px 0;
             padding: 0 12px;
             .title {
                 color: #385b6d;
@@ -154,6 +154,7 @@
                     padding: 11px 25px;
                     font-size: 1.1em;
                     cursor: pointer;
+                    background-color: #385b6d;
                     &.disabled {
                         background-color: #ccc;
                         cursor: default;

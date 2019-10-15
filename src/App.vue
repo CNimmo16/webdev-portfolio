@@ -39,25 +39,7 @@
         return this.$store.state.page;
       },
       pageColor() {
-        var color = null;
-        switch(this.currentPage) {
-            case 0:
-                color = "grey";
-                break;
-            case 1:
-                color = "blue";
-                break;
-            case 2:
-                color = "light";
-                break;
-            case 3:
-                color = "grey";
-                break;
-            case 4:
-                color = "light";
-                break;
-        }
-        return color;
+        return this.$store.state.pageColor
       }
     },
     mounted() {

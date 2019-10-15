@@ -3,16 +3,16 @@
         <div id="nav-sensor" @mouseenter="moused = true"  :class="{ fullscreen: fullscreenSensor }"></div>
         <nav id="nav" :class="{ show: showNav }" @mouseleave="moused = false">
             
-            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 1 }" v-scroll-to="'#start'" @click.stop="$emit('close-nav')">Home</a>
+            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 0 }" v-scroll-to="'#start'" @click.stop="$emit('close-nav')">Home</a>
             <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#start">Home</router-link>
             
-            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 2 }" v-scroll-to="'#projects'" @click.stop="$emit('close-nav')">Projects</a>
+            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 1 }" v-scroll-to="'#projects'" @click.stop="$emit('close-nav')">Projects</a>
             <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#projects">Projects</router-link>
             
-            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 3 }" v-scroll-to="'#lab'" @click.stop="$emit('close-nav')">The Lab</a>
+            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 2 }" v-scroll-to="'#lab'" @click.stop="$emit('close-nav')">The Lab</a>
             <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': ($route.path === '/ripple-music' || $route.path === '/interactive-indonesia') }" to="/#lab">The Lab</router-link>
             
-            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 4 }" v-scroll-to="'#contact'" @click.stop="$emit('close-nav')">Contact</a>
+            <a v-if="isHome" :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', 'router-link-exact-active': currentPage === 3 }" v-scroll-to="'#contact'" @click.stop="$emit('close-nav')">Contact</a>
             <router-link v-else :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/#contact">Contact</router-link>
             <!--<router-link :class="{ grey: pageColor === 'grey', blue: pageColor === 'blue', light: pageColor === 'light', }" to="/blog">Blog</router-link>-->
             
@@ -66,29 +66,7 @@ export default {
             return (this.$store.state.page === 0) ? true : false;
         },
         pageColor() {
-            var color = null;
-            if(this.isHome) {
-              switch(this.currentPage) {
-                  case 0:
-                      color = "grey";
-                      break;
-                  case 1:
-                      color = "grey";
-                      break;
-                  case 2:
-                      color = "light";
-                      break;
-                  case 3:
-                      color = "grey";
-                      break;
-                  case 4:
-                      color = "light";
-                      break;
-              }
-            } else {
-              color = "light"
-            }
-            return color;
+          return this.$store.state.pageColor
         }
     },
     methods: {

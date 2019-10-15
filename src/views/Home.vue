@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Intro from "@/components/home/Intro.vue"
+// import Intro from "@/components/home/Intro.vue"
 import Launchpad from "@/components/home/Launchpad.vue"
 import Projects from "@/components/home/Projects.vue"
 import Lab from "@/components/home/Lab.vue"
@@ -20,7 +20,7 @@ import debounce from 'lodash/debounce';
 export default {
   name: 'home',
   components: {
-    Intro,
+    // Intro,
     Launchpad,
     Projects,
     // Void,
@@ -29,7 +29,7 @@ export default {
   },
   data() {
     return {
-      pages: ["intro", "start", "projects", "lab", "contact"]
+      pages: ["start", "projects", "lab", "contact"]
     }
   },
   mounted() {

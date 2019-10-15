@@ -66,6 +66,10 @@ body {
             max-width: 650px;
         }
     }
+    &--mid {
+        width: 100%;
+        max-width: 800px;
+    }
 }
 
 @keyframes border-wave-y {
