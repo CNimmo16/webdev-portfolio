@@ -154,7 +154,6 @@
                     padding: 11px 25px;
                     font-size: 1.1em;
                     cursor: pointer;
-                    background-color: #385b6d;
                     &.disabled {
                         background-color: #ccc;
                         cursor: default;
