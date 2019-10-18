@@ -9,6 +9,10 @@
                 <img src="@/assets/ext-link-icons/linkedin.png">
                 <span>LinkedIn</span>
             </a>
+            <a class="item" href="/cv.pdf" target="_blank">
+                <img src="@/assets/ext-link-icons/cv.png">
+                <span style="text-align: center;">Résumé</span>
+            </a>
         </nav>
     </div>
 </template>
@@ -85,6 +89,7 @@
                 img {
                     width: 48px;
                     height: 48px;
+                    object-fit: contain;
                     margin-bottom: 7px;
                     filter: invert(1);
                 }

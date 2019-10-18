@@ -6,7 +6,6 @@
             <h2 class="title title--big title--shadow" style="line-height: 1;">
                 <span v-for="(letter, index) in titleText[0]" :key="index" class="title-letter">{{ letter }}</span>
                 <span v-for="(letter, index) in titleText[1]" :key="index + 'line2'" class="title-letter">{{ letter }}</span>
-                <!-- <span>web developer</span> -->
                 <br v-if="winWidth < 590">
                 <span class="rolodex" :class="{'animate': animateRolodex}">
                     <span class="rolodex__phrase" v-for="(word, index) in wordList" ref="rolodex-phrase" :key="index">
@@ -61,7 +60,7 @@
                 interactive: false,
                 winWidth: null,
                 animating: false,
-                wordList: ["web developer", "designer", "artist", "creative", "web developer"]
+                wordList: ["web developer", "designer", "creative", "web developer"]
             }
         },
         computed: {
@@ -170,7 +169,7 @@
                         } else {
                             e.keyframes = keyframes
                         }
-                        tl.add(e, count + delays[i])
+                        // tl.add(e, count + delays[i])
                         count += delays[i]
                     }
                 }, 2500)

@@ -19,11 +19,15 @@
             <div class="ext">
               <a class="item" href="https://github.com/CNimmo16/" target="_blank">
                   <img src="@/assets/ext-link-icons/github.png">
-                  <span>Github</span>
+                  <!-- <span>Github</span> -->
               </a>
               <a class="item" href="https://www.linkedin.com/in/cameron-nimmo" target="_blank">
                   <img src="@/assets/ext-link-icons/linkedin.png">
-                  <span>LinkedIn</span>
+                  <!-- <span>LinkedIn</span> -->
+              </a>
+              <a class="item" href="/cv.pdf" target="_blank">
+                  <img src="@/assets/ext-link-icons/cv.png">
+                  <!-- <span>Resume</span> -->
               </a>
             </div>
         </nav>
@@ -39,11 +43,6 @@ export default {
         }
     },
     props: ["open", "isHome"],
-    watch: {
-      open(newVal) {
-        this.showNav = newVal;
-      },
-    },
     computed: {
         currentPage () {
             return this.$store.state.page;
@@ -150,11 +149,11 @@ export default {
     .item {
       display: flex;
       align-items: center;
-      margin: 0 20px;
+      margin: 0 10px;
       img {
-        width: 40px;
         height: 40px;
         margin-right: 10px;
+        filter: invert(1);
       }
       span {
         color: #fff;
